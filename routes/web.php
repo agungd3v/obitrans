@@ -3,10 +3,8 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-	return view('welcome');
-});
-
+Route::get("/", fn() => view("welcome"));
+Route::get("contact", fn() => view("contact"));
 
 Route::group(["prefix" => "user"], function() {
 	Route::get("", fn() => redirect()->route("dashboard"));

@@ -1,4 +1,5 @@
 @extends("layouts.static-layout")
+@section("home-active", true)
 
 @section("content")
 <div class="position-relative">

@@ -2,6 +2,14 @@ body {
   background-color: #EDF8FF !important;
 }
 
+.min-vh-100 {
+  min-height: 100vh !important;
+}
+
+.flex-1 {
+  flex: 1 !important;
+}
+
 .menu .app-brand.main {
   height: 64px;
   margin-top: 12px;
@@ -373,4 +381,83 @@ footer {
   to {
     opacity: 0;
   }
+}
+
+.jumbo-contact {
+  position: relative;
+  overflow: hidden;
+}
+
+.jumbo-contact::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(3, 0, 125, 0.6);
+  z-index: 1;
+}
+
+.contact-hub {
+  position: absolute;
+  top: 25%;
+  left: 7%;
+  z-index: 1;
+}
+
+.contact-hub h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 5px;
+}
+
+.contact-hub div {
+  height: 3px;
+  background: #FFFFFF;
+}
+
+.contact-section {
+  position: relative;
+  top: -178px;
+  z-index: 2;
+  user-select: none !important;
+}
+
+.contact-section .wrapper-contact {
+  max-width: 80%;
+  margin: 0 auto;
+  background: #FFFFFF;
+  display: flex;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.contact-section .wrapper-contact .left {
+  background: #1D18BC;
+  padding: 20px 25px;
+  width: 100%;
+  position: relative;
+}
+
+.contact-section .wrapper-contact .right {
+  padding: 20px 25px;
+  width: 100%;
+}
+
+.button-send-message {
+  color: #FFFFFF;
+  background: #322DD2;
+  width: 135px;
+  height: 38px;
+  border-radius: 12px;
+  outline: none;
+  border: 0;
+}
+
+.box-group-contact {
+  position: absolute;
+  bottom: -15px;
+  left: -25px;
 }

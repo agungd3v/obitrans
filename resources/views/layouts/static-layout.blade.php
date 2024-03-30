@@ -24,7 +24,7 @@
   @stack("style")
 </head>
 <body>
-  <div class="wrapper vh-100 overflow-hidden d-none">
+  <div class="wrapper d-flex flex-column vh-100 overflow-hidden d-none">
     <div class="navbar-content">
       <div class="d-flex align-items-center justify-content-between">
         <a href="/">
@@ -33,21 +33,34 @@
         <div class="d-flex align-items-center gap-5">
           <div class="position-relative">
             <a href="/" class="text-white nunito-sans fw-bold">Home</a>
-            <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -20px"></div>
+            @hasSection ("home-active")
+              <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
+            @endif
           </div>
           <div class="position-relative">
             <a href="/" class="text-white nunito-sans fw-bold">Company</a>
+            @hasSection ("company-active")
+              <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
+            @endif
           </div>
           <div class="position-relative">
             <a href="/" class="text-white nunito-sans fw-bold">Testimonial</a>
+            @hasSection ("testi-active")
+              <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
+            @endif
           </div>
           <div class="position-relative">
-            <a href="/" class="text-white nunito-sans fw-bold">Kontak</a>
+            <a href="/contact" class="text-white nunito-sans fw-bold">Kontak</a>
+            @hasSection ("contact-active")
+              <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
+            @endif
           </div>
         </div>
       </div>
     </div>
-    @yield("content")
+    <div class="flex-1">
+      @yield("content")
+    </div>
     <div class="section-3">
       <div class="cs-img">
         <img src="{{ asset("customer-support.png") }}" alt="customer support">
@@ -122,6 +135,7 @@
       setTimeout(() => {
         $(".wrapper").removeClass("vh-100");
         $(".wrapper").removeClass("overflow-hidden");
+        $(".wrapper").addClass("min-vh-100");
         $(".welcome-splash").remove();
       }, 2000);
     });
