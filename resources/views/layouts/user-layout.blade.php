@@ -107,6 +107,12 @@
                 <div>Mobil</div>
               </a>
             </li>
+            <li class="menu-item @yield("gallery")">
+              <a href="{{ route("gallery") }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-photo-album"></i>
+                <div>Galeri</div>
+              </a>
+            </li>
             {{-- <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>

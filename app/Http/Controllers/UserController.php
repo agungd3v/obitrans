@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Gallery;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -154,6 +155,49 @@ class UserController extends Controller
 			DB::commit();
 			return redirect()->back()->with("success", "Berhasil melakukan penghapusan data!");
 		} catch (\Exception $e) {
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
+	public function gallery() {
+		$galleries = Gallery::all();
+		return view("user.gallery", compact("galleries"));
+	}
+
+	public function dataGallery(Request $request) {
+		$galleries = Gallery::all();
+
+		return DataTables::of($galleries)->toJson();
+	}
+
+	public function storeGallery(Request $request) {
+		$imgName = "";
+
+		try {
+			DB::beginTransaction();
+
+			$gallery = new Gallery();
+			$gallery->label = Str::uuid();
+
+			if ($request->hasFile("image")) {
+				$ext = $request->file("image")->extension();
+				$imgName = date("dmyHis") ."_". date("His") .".". $ext;
+				$this->validate($request, ["image" => "file|image|max:2048"]);
+
+				$request->file("image")->move("galleries", $imgName);
+			}
+
+			$gallery->path = "galleries/". $imgName;
+			$gallery->save();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil menambah gambar pada gallery");
+		} catch (\Exception $e) {
+			if (File::exists(public_path("galleries/". $imgName))) {
+				File::delete(public_path("galleries/". $imgName));
+			}
+
 			DB::rollBack();
 			return redirect()->back()->with("error", $e->getMessage());
 		}

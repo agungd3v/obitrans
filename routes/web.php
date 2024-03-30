@@ -16,4 +16,7 @@ Route::group(["prefix" => "user"], function() {
 	Route::delete("car/delete", [UserController::class, "deleteCar"])->name("car.delete");
 	Route::get("car/show/{id}", [UserController::class, "showCar"])->name("car.show");
 	Route::put("car/update", [UserController::class, "updateCar"])->name("car.update");
+	Route::get("gallery", [UserController::class, "gallery"])->name("gallery");
+	Route::get("gallery/data", [UserController::class, "dataGallery"])->name("gallery.data");
+	Route::post("gallery", [UserController::class, "storeGallery"])->name("gallery.store");
 });
