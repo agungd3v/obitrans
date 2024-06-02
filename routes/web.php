@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\StaticController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get("/", fn() => view("welcome"));
-Route::get("contact", fn() => view("contact"));
-Route::get("company", fn() => view("company"));
-Route::get("testimonial", fn() => view("testimonial"));
+Route::get("/", [StaticController::class, "home"]);
+Route::get("company", [StaticController::class, "company"]);
+Route::get("testimonial", [StaticController::class, "testimonial"]);
+Route::get("contact", [StaticController::class, "contact"]);
+Route::get("rent/{type}", [StaticController::class, "rent"]);
+Route::post("rent/data", [StaticController::class, "rentData"]);
 
 Route::group(["prefix" => "user"], function() {
 	Route::get("", fn() => redirect()->route("dashboard"));

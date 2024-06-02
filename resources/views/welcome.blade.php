@@ -10,10 +10,10 @@
 	<div class="section-rent shadow">
 		<p class="text-dark fw-semibold">Pilih Jenis Sewa:</p>
 		<div class="d-flex align-items-center gap-3">
-			<a href="#">
+			<a href="/rent/corporate">
 				Corporate
 			</a>
-			<a href="#">
+			<a href="/rent/harian">
 				Harian
 			</a>
 		</div>
