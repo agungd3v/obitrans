@@ -21,4 +21,7 @@ Route::group(["prefix" => "user"], function() {
 	Route::get("gallery", [UserController::class, "gallery"])->name("gallery");
 	Route::get("gallery/data", [UserController::class, "dataGallery"])->name("gallery.data");
 	Route::post("gallery", [UserController::class, "storeGallery"])->name("gallery.store");
+	Route::get("testimonial", [UserController::class, "testimonial"])->name("testimonial");
+	Route::get("testimonial/data", [UserController::class, "testimonialData"])->name("testimonial.data");
+	Route::post("testimonial", [UserController::class, "testimonialStore"])->name("testimonial.store");
 });

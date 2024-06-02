@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use App\Models\Gallery;
+use App\Models\Testimonial;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -81,7 +82,7 @@ class UserController extends Controller
 
 			$car = new Car();
 			$car->label = $request->label;
-			$car->slug = Str::slug($request->label);
+			$car->slug = Str::slug($request->label) . "_" . time();
 			$car->gear = $request->gear;
 			$car->fuel = $request->fuel;
 			$car->capacity = $request->capacity;
@@ -196,6 +197,48 @@ class UserController extends Controller
 		} catch (\Exception $e) {
 			if (File::exists(public_path("galleries/". $imgName))) {
 				File::delete(public_path("galleries/". $imgName));
+			}
+
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
+	public function testimonial() {
+		return view("user.testimonial");
+	}
+
+	public function testimonialData(Request $request) {
+		$testimonials = Testimonial::orderBy("id", "desc")->get();
+
+		return DataTables::of($testimonials)->toJson();
+	}
+
+	public function testimonialStore(Request $request) {
+		$imgName = "";
+
+		try {
+			DB::beginTransaction();
+
+			if ($request->hasFile("author_image")) {
+				$ext = $request->file("author_image")->extension();
+				$imgName = date("dmyHis") ."_". date("His") .".". $ext;
+				$this->validate($request, ["author_image" => "file|image|max:2048"]);
+
+				$request->file("author_image")->move("author", $imgName);
+			}
+
+			$car = new Testimonial();
+			$car->author_name = $request->author_name;
+			$car->author_image = $imgName == "" ? null : "author/". $imgName;
+			$car->content = $request->content;
+			$car->save();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil menambahkan testimonial baru!");
+		} catch (\Exception $e) {
+			if (File::exists(public_path("author/". $imgName))) {
+				File::delete(public_path("author/". $imgName));
 			}
 
 			DB::rollBack();
