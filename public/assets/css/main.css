@@ -192,14 +192,22 @@ body {
   margin-bottom: 18px;
 }
 
-.section-2 h2 {
+.section-2 h2,
+.section-about-company h2,
+.company-visi-misi h2,
+.company-services h2,
+.company-location h2 {
   color: #322DD2;
   font-size: 18px;
   font-weight: 700;
   position: relative;
 }
 
-.section-2 h2::before {
+.section-2 h2::before,
+.section-about-company h2::before,
+.company-visi-misi h2::before,
+.company-services h2::before,
+.company-location h2::before {
   content: "";
   position: absolute;
   left: 0;
@@ -223,7 +231,9 @@ body {
   user-select: none !important;
 }
 
-.section-2 .service-box {
+.section-2 .service-box,
+.company-services .service-box,
+.company-qna .service-box {
   border-radius: 18px;
   padding: 16px;
   background: #FFFFFF;
@@ -233,7 +243,6 @@ body {
 .section-3 {
   position: relative;
   padding: 36px 120px;
-  /* background: #3F3ADB; */
   background: #1D18BC;
   display: flex;
   justify-content: space-between;
@@ -460,4 +469,117 @@ footer {
   position: absolute;
   bottom: -15px;
   left: -25px;
+}
+
+.jumbo-company {
+  background-image: url("/jumbo_company.png");
+  background-size: cover;
+  height: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.company-visi-misi,
+.company-qna {
+  background: #1D18BC;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.company-qna {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.slick-fade {
+  width: 650px;
+  height: 310px;
+}
+
+.jumbo-company iframe {
+  width: 560px;
+  height: 316px;
+  margin-right: 80px;
+}
+
+.company-welcome {
+  padding: 70px 60px;
+}
+
+.company-services,
+.company-location {
+  padding: 0 80px 3rem 80px;
+}
+
+@media only screen and (max-width: 512px) {
+  .slick-fade {
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .jumbo-company iframe {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .company-welcome {
+    padding: 35px 20px;
+  }
+
+  .company-visi-misi,
+  .company-services,
+  .company-qna,
+  .company-location {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .company-services .service-box,
+  .company-qna .service-box {
+    margin-top: 20px;
+  }
+
+  .section-rent {
+    bottom: -100px;
+    width: 100%;
+  }
+
+  .section-2 {
+    padding: 140px 20px;
+  }
+
+  .section-2 .visi-misi {
+    padding: 20px;
+  }
+
+  .section-2 div:nth-child(1),
+  .section-2 div:nth-child(2),
+  .section-2 div:nth-child(3) {
+    margin-bottom: 15px;
+  }
+
+  .section-3 {
+    padding: 36px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-3 div {
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-3 a {
+    margin-top: 10px;
+  }
+
+  .section-3 .cs-img img {
+    display: none;
+  }
+
+  footer {
+    padding: 30px 20px;
+  }
 }

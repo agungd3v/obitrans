@@ -38,7 +38,7 @@
             @endif
           </div>
           <div class="position-relative">
-            <a href="/" class="text-white nunito-sans fw-bold">Company</a>
+            <a href="{{ url("company") }}" class="text-white nunito-sans fw-bold">Company</a>
             @hasSection ("company-active")
               <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
             @endif
@@ -58,7 +58,7 @@
         </div>
       </div>
     </div>
-    <div class="flex-1">
+    <div class="flex-1" style="overflow-x: hidden">
       @yield("content")
     </div>
     <div class="section-3">

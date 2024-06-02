@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get("/", fn() => view("welcome"));
 Route::get("contact", fn() => view("contact"));
+Route::get("company", fn() => view("company"));
 
 Route::group(["prefix" => "user"], function() {
 	Route::get("", fn() => redirect()->route("dashboard"));
