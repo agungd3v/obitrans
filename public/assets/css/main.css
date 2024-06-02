@@ -196,7 +196,9 @@ body {
 .section-about-company h2,
 .company-visi-misi h2,
 .company-services h2,
-.company-location h2 {
+.company-location h2,
+.testimonial-section-1 h2,
+.testimonial-section-2 h2 {
   color: #322DD2;
   font-size: 18px;
   font-weight: 700;
@@ -207,7 +209,9 @@ body {
 .section-about-company h2::before,
 .company-visi-misi h2::before,
 .company-services h2::before,
-.company-location h2::before {
+.company-location h2::before,
+.testimonial-section-1 h2::before,
+.testimonial-section-2 h2::before {
   content: "";
   position: absolute;
   left: 0;
@@ -511,6 +515,22 @@ footer {
   padding: 0 80px 3rem 80px;
 }
 
+.testimonial-section-2 {
+  margin: 0 80px 140px 80px;
+  padding: 40px 0;
+}
+
+.testimonial-section-1 {
+  margin-left: 80px;
+  margin-right: 80px;
+  padding: 40px;
+}
+
+.slide-testi {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
 @media only screen and (max-width: 512px) {
   .slick-fade {
     margin-top: 10px;
@@ -581,5 +601,21 @@ footer {
 
   footer {
     padding: 30px 20px;
+  }
+
+  .testimonial-section-2 {
+    margin: 0 20px 20px 20px;
+    padding: 40px 0;
+  }
+
+  .testimonial-section-1 {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 40px;
+  }
+
+  .slide-testi {
+    padding-right: 0;
+    padding-left: 0;
   }
 }

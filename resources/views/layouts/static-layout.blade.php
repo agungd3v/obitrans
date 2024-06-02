@@ -38,13 +38,13 @@
             @endif
           </div>
           <div class="position-relative">
-            <a href="{{ url("company") }}" class="text-white nunito-sans fw-bold">Company</a>
+            <a href="/company" class="text-white nunito-sans fw-bold">Company</a>
             @hasSection ("company-active")
               <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
             @endif
           </div>
           <div class="position-relative">
-            <a href="/" class="text-white nunito-sans fw-bold">Testimonial</a>
+            <a href="/testimonial" class="text-white nunito-sans fw-bold">Testimonial</a>
             @hasSection ("testi-active")
               <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
             @endif
