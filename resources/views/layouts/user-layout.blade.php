@@ -107,6 +107,12 @@
                 <div>Mobil</div>
               </a>
             </li>
+            <li class="menu-item @yield("service")">
+              <a href="{{ route("service") }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-buoy"></i>
+                <div>Layanan</div>
+              </a>
+            </li>
             <li class="menu-item @yield("gallery")">
               <a href="{{ route("gallery") }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-photo-album"></i>

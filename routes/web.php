@@ -35,4 +35,8 @@ Route::group(["prefix" => "user"], function() {
 	Route::get("social/data", [UserController::class, "socialData"])->name("social.data");
 	Route::get("social/data/{id}", [UserController::class, "showSocial"])->name("social.show.data");
 	Route::put("social", [UserController::class, "updateSocial"])->name("social.update");
+	Route::get("service", [UserController::class, "service"])->name("service");
+	Route::get("service/data", [UserController::class, "serviceData"])->name("service.data");
+	Route::get("service/data/{id}", [UserController::class, "showService"])->name("service.show.data");
+	Route::put("service", [UserController::class, "updateService"])->name("service.update");
 });

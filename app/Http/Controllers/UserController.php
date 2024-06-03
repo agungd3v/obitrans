@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use App\Models\Contact;
 use App\Models\Gallery;
+use App\Models\Service;
 use App\Models\SocialMedia;
 use App\Models\Testimonial;
 use App\Models\Type;
@@ -301,6 +302,50 @@ class UserController extends Controller
 			$social = SocialMedia::where("id", $request->social_id)->first();
 			$social->value = $request->social_value;
 			$social->save();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil mengubah data sosial media!");
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
+	public function service() {
+		return view("user.service");
+	}
+
+	public function serviceData(Request $request) {
+		$services = Service::all();
+
+		return DataTables::of($services)->toJson();
+	}
+
+	public function showService(Request $request, $id) {
+		$service = Service::where("id", $id)->first();
+		return response()->json(["data" => $service]);
+	}
+
+	public function updateService(Request $request) {
+		$imgName = "";
+
+		try {
+			DB::beginTransaction();
+
+			$service = Service::where("id", $request->id)->first();
+			$service->title = $request->title;
+			$service->content = $request->content;
+			$service->save();
+
+			if ($request->hasFile("image_icon")) {
+				$ext = $request->file("image_icon")->extension();
+				$imgName = date("dmyHis") ."_". date("His") .".". $ext;
+				$this->validate($request, ["image_icon" => "file|image|max:2048"]);
+				$request->file("image_icon")->move("services", $imgName);
+
+				$service->image_icon = "services/". $imgName;
+				$service->save();
+			}
 
 			DB::commit();
 			return redirect()->back()->with("success", "Berhasil mengubah data sosial media!");

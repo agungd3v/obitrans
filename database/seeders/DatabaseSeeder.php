@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
 			TypeSeeder::class,
 			TestimonialSeeder::class,
 			ContactSeeder::class,
-			SocialMediaSeeder::class
+			SocialMediaSeeder::class,
+			ServiceSeeder::class
 		]);
 	}
 }
