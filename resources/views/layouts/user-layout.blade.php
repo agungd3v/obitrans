@@ -101,6 +101,12 @@
                 <div>Dashboard</div>
               </a>
             </li>
+            <li class="menu-item @yield("banner")">
+              <a href="{{ route("banner") }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-image"></i>
+                <div>Banner</div>
+              </a>
+            </li>
             <li class="menu-item @yield("car")">
               <a href="{{ route("car") }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-car"></i>

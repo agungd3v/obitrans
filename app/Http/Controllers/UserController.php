@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\Car;
 use App\Models\Contact;
 use App\Models\Gallery;
@@ -349,6 +350,42 @@ class UserController extends Controller
 
 			DB::commit();
 			return redirect()->back()->with("success", "Berhasil mengubah data sosial media!");
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
+	public function banner() {
+		return view("user.banner");
+	}
+
+	public function bannerData(Request $request) {
+		$banners = Banner::all();
+
+		return DataTables::of($banners)->toJson();
+	}
+
+	public function storeBanner(Request $request) {
+		$imgName = "";
+
+		try {
+			DB::beginTransaction();
+
+			if (!$request->hasFile("banner_image")) throw new \Exception("Gambar tidak boleh kosong");
+
+			$banner = new Banner();
+
+			$ext = $request->file("banner_image")->extension();
+			$imgName = date("dmyHis") ."_". date("His") .".". $ext;
+			$this->validate($request, ["banner_image" => "file|image|max:2048"]);
+			$request->file("banner_image")->move("banners", $imgName);
+
+			$banner->banner_image = "banners/". $imgName;
+			$banner->save();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil menambah data banner!");
 		} catch (\Exception $e) {
 			DB::rollBack();
 			return redirect()->back()->with("error", $e->getMessage());

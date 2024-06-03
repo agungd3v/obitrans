@@ -39,4 +39,7 @@ Route::group(["prefix" => "user"], function() {
 	Route::get("service/data", [UserController::class, "serviceData"])->name("service.data");
 	Route::get("service/data/{id}", [UserController::class, "showService"])->name("service.show.data");
 	Route::put("service", [UserController::class, "updateService"])->name("service.update");
+	Route::get("banner", [UserController::class, "banner"])->name("banner");
+	Route::get("banner/data", [UserController::class, "bannerData"])->name("banner.data");
+	Route::post("banner", [UserController::class, "storeBanner"])->name("banner.store");
 });

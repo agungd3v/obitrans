@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
 			TestimonialSeeder::class,
 			ContactSeeder::class,
 			SocialMediaSeeder::class,
-			ServiceSeeder::class
+			ServiceSeeder::class,
+			BannerSeeder::class
 		]);
 	}
 }
