@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Contact;
 use App\Models\Gallery;
+use App\Models\SocialMedia;
 use App\Models\Testimonial;
 use App\Models\Type;
 use Illuminate\Http\Request;
@@ -241,6 +243,68 @@ class UserController extends Controller
 				File::delete(public_path("author/". $imgName));
 			}
 
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
+	public function contact() {
+		return view("user.contact");
+	}
+
+	public function contactData(Request $request) {
+		$contacts = Contact::all();
+
+		return DataTables::of($contacts)->toJson();
+	}
+
+	public function showContact(Request $request, $id) {
+		$contact = Contact::where("id", $id)->first();
+		return response()->json(["data" => $contact]);
+	}
+
+	public function updateContact(Request $request) {
+		try {
+			DB::beginTransaction();
+
+			$contact = Contact::where("id", $request->contact_id)->first();
+			$contact->value = $request->contact_value;
+			$contact->save();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil mengubah data contact!");
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
+	public function social() {
+		return view("user.social");
+	}
+
+	public function socialData(Request $request) {
+		$social = SocialMedia::all();
+
+		return DataTables::of($social)->toJson();
+	}
+
+	public function showSocial(Request $request, $id) {
+		$social = SocialMedia::where("id", $id)->first();
+		return response()->json(["data" => $social]);
+	}
+
+	public function updateSocial(Request $request) {
+		try {
+			DB::beginTransaction();
+
+			$social = SocialMedia::where("id", $request->social_id)->first();
+			$social->value = $request->social_value;
+			$social->save();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil mengubah data sosial media!");
+		} catch (\Exception $e) {
 			DB::rollBack();
 			return redirect()->back()->with("error", $e->getMessage());
 		}

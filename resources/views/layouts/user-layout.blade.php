@@ -119,6 +119,18 @@
                 <div>Testimonial</div>
               </a>
             </li>
+            <li class="menu-item @yield("contact")">
+              <a href="{{ route("contact") }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-contact"></i>
+                <div>Kontak</div>
+              </a>
+            </li>
+            <li class="menu-item @yield("social")">
+              <a href="{{ route("social") }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxl-instagram-alt"></i>
+                <div>Sosial Media</div>
+              </a>
+            </li>
           </ul>
         </aside>
         <div class="layout-page">

@@ -17,7 +17,9 @@ class DatabaseSeeder extends Seeder
 		$this->call([
 			BranchSeeder::class,
 			TypeSeeder::class,
-			TestimonialSeeder::class
+			TestimonialSeeder::class,
+			ContactSeeder::class,
+			SocialMediaSeeder::class
 		]);
 	}
 }

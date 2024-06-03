@@ -27,4 +27,12 @@ Route::group(["prefix" => "user"], function() {
 	Route::get("testimonial", [UserController::class, "testimonial"])->name("testimonial");
 	Route::get("testimonial/data", [UserController::class, "testimonialData"])->name("testimonial.data");
 	Route::post("testimonial", [UserController::class, "testimonialStore"])->name("testimonial.store");
+	Route::get("contact", [UserController::class, "contact"])->name("contact");
+	Route::get("contact/data", [UserController::class, "contactData"])->name("contact.data");
+	Route::get("contact/data/{id}", [UserController::class, "showContact"])->name("contact.show.data");
+	Route::put("contact", [UserController::class, "updateContact"])->name("contact.update");
+	Route::get("social", [UserController::class, "social"])->name("social");
+	Route::get("social/data", [UserController::class, "socialData"])->name("social.data");
+	Route::get("social/data/{id}", [UserController::class, "showSocial"])->name("social.show.data");
+	Route::put("social", [UserController::class, "updateSocial"])->name("social.update");
 });
