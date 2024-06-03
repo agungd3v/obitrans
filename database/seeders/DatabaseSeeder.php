@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
 			ContactSeeder::class,
 			SocialMediaSeeder::class,
 			ServiceSeeder::class,
-			BannerSeeder::class
+			BannerSeeder::class,
+			SlideSeeder::class
 		]);
 	}
 }

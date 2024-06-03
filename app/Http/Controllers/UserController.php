@@ -7,6 +7,7 @@ use App\Models\Car;
 use App\Models\Contact;
 use App\Models\Gallery;
 use App\Models\Service;
+use App\Models\Slider;
 use App\Models\SocialMedia;
 use App\Models\Testimonial;
 use App\Models\Type;
@@ -445,5 +446,15 @@ class UserController extends Controller
 			DB::rollBack();
 			return redirect()->back()->with("error", $e->getMessage());
 		}
+	}
+
+	public function company() {
+		return view("user.company");
+	}
+
+	public function companySlideData() {
+		$data = Slider::all();
+
+		return DataTables::of($data)->toJson();
 	}
 }
