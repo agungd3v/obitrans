@@ -391,4 +391,59 @@ class UserController extends Controller
 			return redirect()->back()->with("error", $e->getMessage());
 		}
 	}
+
+	public function showBanner(Request $request, $id) {
+		$banner = Banner::where("id", $id)->first();
+		return response()->json(["data" => $banner]);
+	}
+
+	public function bannerUpdate(Request $request) {
+		$imgName = "";
+
+		try {
+			DB::beginTransaction();
+
+			if (!$request->hasFile("banner_image")) throw new \Exception("Gambar tidak boleh kosong");
+
+			$banner = Banner::where("id", $request->id)->first();
+
+			if (File::exists(public_path($banner->banner_image))) {
+				File::delete(public_path($banner->banner_image));
+			}
+
+			$ext = $request->file("banner_image")->extension();
+			$imgName = date("dmyHis") ."_". date("His") .".". $ext;
+			$this->validate($request, ["banner_image" => "file|image|max:2048"]);
+			$request->file("banner_image")->move("banners", $imgName);
+
+			$banner->banner_image = "banners/". $imgName;
+			$banner->save();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil mengubah banner!");
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
+	public function deleteBanner(Request $request) {
+		try {
+			DB::beginTransaction();
+
+			$banner = Banner::where("id", $request->id)->first();
+
+			if (File::exists(public_path($banner->banner_image))) {
+				File::delete(public_path($banner->banner_image));
+			}
+
+			$banner->delete();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil menghapus banner!");
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
 }

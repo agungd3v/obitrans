@@ -42,4 +42,7 @@ Route::group(["prefix" => "user"], function() {
 	Route::get("banner", [UserController::class, "banner"])->name("banner");
 	Route::get("banner/data", [UserController::class, "bannerData"])->name("banner.data");
 	Route::post("banner", [UserController::class, "storeBanner"])->name("banner.store");
+	Route::get("banner/data/{id}", [UserController::class, "showBanner"])->name("banner.show");
+	Route::put("banner", [UserController::class, "bannerUpdate"])->name("banner.update");
+	Route::delete("banner", [UserController::class, "deleteBanner"])->name("banner.delete");
 });

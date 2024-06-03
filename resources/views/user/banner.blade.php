@@ -68,6 +68,54 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="update" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <form action="{{ route("banner.update") }}" method="POST" enctype="multipart/form-data">
+        @method("PUT")
+        @csrf
+        <input type="hidden" name="id" id="banner_id">
+        <div class="modal-body">
+          <div class="flex-column gap-1 mb-3">
+            <label for="banner_image">Image</label>
+            <input type="file" name="banner_image" id="banner_image" class="form-control" autocomplete="off">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="delete" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Hapus Data</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="{{ route("banner.delete") }}" method="POST">
+        @method("DELETE")
+        @csrf
+        <input type="hidden" id="delete_banner_id" name="id" value="">
+        <div class="modal-body pt-2">
+          <div>
+            Apakah kamu yakin ingin menghapus banner ini?
+          </div>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-danger">Ya, Hapus!</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 @endsection
 
 @push("script")
@@ -126,7 +174,7 @@
                 <span class="text-white" style="font-size: 14px !important">Ubah</span>
               </div>
             </button>
-            <button class="btn btn-sm btn-danger" style="padding: 6px 12px; border-radius: 8px" onclick="deleteData('${row.id}', '${row.label}')" data-bs-toggle="modal" data-bs-target="#delete">
+            <button class="btn btn-sm btn-danger" style="padding: 6px 12px; border-radius: 8px" onclick="deleteData('${row.id}')" data-bs-toggle="modal" data-bs-target="#delete">
               <div class="flex items-center gap-1">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <mask id="mask0_1900_17101" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="3" y="2" width="10" height="12">
@@ -174,23 +222,15 @@
   }
 
   function showData(id) {
-    $.get(`/user/car/show/${id}`, function(response, status) {
-      console.log(response);
+    $.get(`/user/banner/data/${id}`, function(response, status) {
       if (status == "success") {
-        $("#rent-id").val(response.data.id);
-        $("#rent-update").val(response.data.type_id);
-        $("#label-update").val(response.data.label);
-        $("#fuel-update").val(response.data.fuel);
-        $("#capacity-update").val(response.data.capacity);
-        $("#gear-update").val(response.data.gear);
-        $("#price-update").val(response.data.price_per_day);
+        $("#banner_id").val(response.data.id);
       }
     });
   }
 
   function deleteData(id, title) {
-    $("#id-car-delete").val(id);
-    $("#data-delete-label").text(title + "!");
+    $("#delete_banner_id").val(id);
   }
 </script>
 @endpush
