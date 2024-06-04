@@ -47,14 +47,15 @@
         </div>
         <div class="col-sm-12 col-md-6 mb-2 text-white">
           <p class="fw-bold">Contact</p>
-          <div class="mb-1">Phone: 0212252542</div>
-          <div class="mb-1">Mobile: 08521252511</div>
-          <div class="mb-1">Whatsapp: 08521252511</div>
-          <div>Email: cs@obitrans.co.id</div>
+          @foreach ($contacts as $contact)
+            <div class="mb-1">{{ $contact->label }}: {{ $contact->value }}</div>
+          @endforeach
           <div class="fw-bold my-3">Social Media</div>
           <div class="d-flex align-items-center gap-1">
-            <img src="{{ asset("instagram.png") }}" class="img-fluid" width="30" height="30" alt="instagram obitrans indonesia">
-            @obitransindonesia
+            @foreach ($socials as $social)
+              <img src="{{ asset("instagram.png") }}" class="img-fluid" width="30" height="30" alt="instagram obitrans indonesia">
+              {{ $social->value }}
+            @endforeach
           </div>
         </div>
       </div>

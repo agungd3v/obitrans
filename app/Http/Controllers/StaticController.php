@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Contact;
+use App\Models\Gallery;
+use App\Models\Service;
+use App\Models\SocialMedia;
+use App\Models\Testimonial;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -10,19 +15,29 @@ use Yajra\DataTables\Facades\DataTables;
 class StaticController extends Controller
 {
 	public function home() {
-		return view("welcome");
+		$services = Service::all();
+
+		return view("welcome", compact("services"));
 	}
 
 	public function company() {
-		return view("company");
+		$services = Service::all();
+
+		return view("company", compact("services"));
 	}
 
 	public function testimonial() {
-		return view("testimonial");
+		$testimonials = Testimonial::all();
+		$galleries = Gallery::all();
+
+		return view("testimonial", compact("testimonials", "galleries"));
 	}
 
 	public function contact() {
-		return view("contact");
+		$contacts = Contact::all();
+		$socials = SocialMedia::all();
+
+		return view("contact", compact("contacts", "socials"));
 	}
 
 	public function rent(Request $request, $type) {

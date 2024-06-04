@@ -5,7 +5,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get("/", [StaticController::class, "home"]);
-Route::get("company", [StaticController::class, "company"]);
+Route::get("companys", [StaticController::class, "company"]);
 Route::get("testimonial", [StaticController::class, "testimonial"]);
 Route::get("contact", [StaticController::class, "contact"]);
 Route::get("rent/{type}", [StaticController::class, "rent"]);

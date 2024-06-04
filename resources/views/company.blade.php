@@ -58,50 +58,21 @@
     <h2 class="nunito-sans fs-4">Layanan Kami</h2>
   </div>
   <div class="row mt-4">
-    <div class="col-md-3">
-      <div class="service-box shadow">
-        <div class="text-center">
-          <img src="{{ asset("service-1.png") }}" class="img-fluid" width="150" height="150" alt="service 1">
-        </div>
-        <p class="text-center text-dark nunito-sans fw-semibold mb-0 position-relative" style="top: -10px">Lorem ipsum</p>
-        <p class="mb-0 text-dark nunito-sans">
-          viverra dolor nulla, odio sed orci nisi quis sapien odio nisi ultrices sit felis, gravida facilisis sit Vestibulum sed Vestibulum Sed facilisis tortor. sapien ipsum venenatis ex eu adipiscing porta volutpat faucibus urna. libero, quam volutpat lacus, tortor. placerat lorem.
-        </p>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="service-box shadow">
-        <div class="text-center">
-          <img src="{{ asset("service-2.png") }}" class="img-fluid" width="150" height="150" alt="service 2">
-        </div>
-        <p class="text-center text-dark nunito-sans fw-semibold mb-0 position-relative" style="top: -10px">Lorem ipsum</p>
-        <p class="mb-0 text-dark nunito-sans">
-          viverra dolor nulla, odio sed orci nisi quis sapien odio nisi ultrices sit felis, gravida facilisis sit Vestibulum sed Vestibulum Sed facilisis tortor. sapien ipsum venenatis ex eu adipiscing porta volutpat faucibus urna. libero, quam volutpat lacus, tortor. placerat lorem.
-        </p>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="service-box shadow">
-        <div class="text-center">
-          <img src="{{ asset("service-3.png") }}" class="img-fluid" width="150" height="150" alt="service 3">
-        </div>
-        <p class="text-center text-dark nunito-sans fw-semibold mb-0 position-relative" style="top: -10px">Lorem ipsum</p>
-        <p class="mb-0 text-dark nunito-sans">
-          viverra dolor nulla, odio sed orci nisi quis sapien odio nisi ultrices sit felis, gravida facilisis sit Vestibulum sed Vestibulum Sed facilisis tortor. sapien ipsum venenatis ex eu adipiscing porta volutpat faucibus urna. libero, quam volutpat lacus, tortor. placerat lorem.
-        </p>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div class="service-box shadow">
-        <div class="text-center">
-          <img src="{{ asset("service-4.png") }}" class="img-fluid" width="150" height="150" alt="service 4">
-        </div>
-        <p class="text-center text-dark nunito-sans fw-semibold mb-0 position-relative" style="top: -10px">Lorem ipsum</p>
-        <p class="mb-0 text-dark nunito-sans">
-          viverra dolor nulla, odio sed orci nisi quis sapien odio nisi ultrices sit felis, gravida facilisis sit Vestibulum sed Vestibulum Sed facilisis tortor. sapien ipsum venenatis ex eu adipiscing porta volutpat faucibus urna. libero, quam volutpat lacus, tortor. placerat lorem.
-        </p>
-      </div>
-    </div>
+    @foreach ($services as $service)
+			<div class="col-md-3">
+				<div class="service-box shadow">
+					<div class="text-center">
+						<img src="{{ asset($service->image_icon) }}" width="150" height="150" alt="service 1">
+					</div>
+					<p class="text-center text-dark nunito-sans fw-semibold mb-0 position-relative">
+						{{ $service->title }}
+					</p>
+					<p class="mb-0 text-dark nunito-sans mt-3" style="height: 200px">
+						{{ $service->content }}
+					</p>
+				</div>
+			</div>
+		@endforeach
   </div>
 </div>
 <div class="company-qna row justify-content-center">

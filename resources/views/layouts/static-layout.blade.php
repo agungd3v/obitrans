@@ -38,7 +38,7 @@
             @endif
           </div>
           <div class="position-relative">
-            <a href="/company" class="text-white nunito-sans fw-bold">Company</a>
+            <a href="/companys" class="text-white nunito-sans fw-bold">Company</a>
             @hasSection ("company-active")
               <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
             @endif
@@ -131,13 +131,11 @@
   <script>
     $(document).ready(function() {
       $(".wrapper").removeClass("d-none");
+      $(".wrapper").removeClass("overflow-hidden");
+      $(".wrapper").removeClass("vh-100");
+      $(".wrapper").addClass("min-vh-100");
       setTimeout(() => $(".welcome-splash").addClass("animate-hidden"), 1000);
-      setTimeout(() => {
-        $(".wrapper").removeClass("vh-100");
-        $(".wrapper").removeClass("overflow-hidden");
-        $(".wrapper").addClass("min-vh-100");
-        $(".welcome-splash").remove();
-      }, 2000);
+      setTimeout(() => $(".welcome-splash").remove(), 2000);
     });
   </script>
   @stack("script")
