@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\StaticController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -11,7 +12,11 @@ Route::get("contact", [StaticController::class, "contact"]);
 Route::get("rent/{type}", [StaticController::class, "rent"]);
 Route::post("rent/data", [StaticController::class, "rentData"]);
 
-Route::group(["prefix" => "user"], function() {
+Route::get("login", [AuthController::class, "loginPage"])->name("login");
+Route::post("login", [AuthController::class, "login"])->name("login.post");
+Route::get("logout", [AuthController::class, "logout"])->name("logout");
+
+Route::group(["prefix" => "user", "middleware" => ["auth"]], function() {
 	Route::get("", fn() => redirect()->route("dashboard"));
 	Route::get("dashboard", [UserController::class, "dashboard"])->name("dashboard");
 	Route::get("car", [UserController::class, "car"])->name("car");

@@ -24,12 +24,11 @@
     </div>
     <div class="col-md-6 col-sm-12">
       <div class="slick-fade">
-        <div>
-          <img src="{{ asset("/company_slide_1.png") }}" class="img-fluid" alt="fade-1">
-        </div>
-        <div>
-          <img src="{{ asset("/company_slide_1.png") }}" class="img-fluid" alt="fade-1">
-        </div>
+        @foreach ($slides as $key => $slide)
+          <div>
+            <img src="{{ asset($slide->slide_image) }}" class="img-fluid" alt="{{ $key + 1 }}">
+          </div>
+        @endforeach
       </div>
     </div>
   </div>

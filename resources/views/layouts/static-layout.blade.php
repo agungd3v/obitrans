@@ -25,39 +25,52 @@
 </head>
 <body>
   <div class="wrapper d-flex flex-column vh-100 overflow-hidden d-none">
-    <div class="navbar-content">
-      <div class="d-flex align-items-center justify-content-between">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-content">
+      <div class="container-fluid">
         <a href="/">
           <img src="{{ asset("logo.png") }}" alt="logo" width="148" height="51">
         </a>
-        <div class="d-flex align-items-center gap-5">
-          <div class="position-relative">
-            <a href="/" class="text-white nunito-sans fw-bold">Home</a>
-            @hasSection ("home-active")
-              <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
-            @endif
-          </div>
-          <div class="position-relative">
-            <a href="/companys" class="text-white nunito-sans fw-bold">Company</a>
-            @hasSection ("company-active")
-              <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
-            @endif
-          </div>
-          <div class="position-relative">
-            <a href="/testimonial" class="text-white nunito-sans fw-bold">Testimonial</a>
-            @hasSection ("testi-active")
-              <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
-            @endif
-          </div>
-          <div class="position-relative">
-            <a href="/contact" class="text-white nunito-sans fw-bold">Kontak</a>
-            @hasSection ("contact-active")
-              <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
-            @endif
-          </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <div class="position-relative me-5 navbar-item">
+                <a href="/" class="text-white nunito-sans fw-bold">Home</a>
+                @hasSection ("home-active")
+                  <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
+                @endif
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="position-relative me-5 navbar-item">
+                <a href="/companys" class="text-white nunito-sans fw-bold">Company</a>
+                @hasSection ("company-active")
+                  <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
+                @endif
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="position-relative me-5 navbar-item">
+                <a href="/testimonial" class="text-white nunito-sans fw-bold">Testimonial</a>
+                @hasSection ("testi-active")
+                  <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
+                @endif
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="position-relative me-5 navbar-item">
+                <a href="/contact" class="text-white nunito-sans fw-bold">Kontak</a>
+                @hasSection ("contact-active")
+                  <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
+                @endif
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
+    </nav>
     <div class="flex-1" style="overflow-x: hidden">
       @yield("content")
     </div>
@@ -69,7 +82,7 @@
         <p class="mb-1 fw-bold" style="font-size: 16px">Layanan Sewa Obitrans</p>
         <p class="mb-0">Silahkan hubungi kami untuk informasi lebih lanjut.</p>
       </div>
-      <a href="#" class="nunito-sans text-dark fw-bold">Hubungi Kami</a>
+      <a href="https://api.whatsapp.com/send?phone=62811946221&text=Halo%20saya%20tertarik%20dengan%20rental%20mobil%20di%20PT.%20Obitrans,%20apakah%20saya%20dapat%20mendapatkan%20pricelist%20atau%20penawaran%20harga%20untuk%20perusahaan%20saya" class="nunito-sans text-dark fw-bold">Hubungi Kami</a>
     </div>
     <footer>
       <div class="footer-1">
@@ -123,6 +136,9 @@
     <img src="{{ asset("favicon.ico") }}" width="80" height="80" alt="logo">
     <span class="loader-splash"></span>
   </div>
+  <a href="https://api.whatsapp.com/send?phone=62811946221&text=Halo%20saya%20tertarik%20dengan%20rental%20mobil%20di%20PT.%20Obitrans,%20apakah%20saya%20dapat%20mendapatkan%20pricelist%20atau%20penawaran%20harga%20untuk%20perusahaan%20saya" class="position-fixed" style="top: 50%; right: 0; transform: translateY(-50%)">
+    <img src="{{ asset("flying_wa.png") }}" class="flying-wa" alt="">
+  </a>
   <script src="{{ asset("assets/vendor/libs/jquery/jquery.js") }}"></script>
   <script src="{{ asset("assets/vendor/libs/popper/popper.js") }}"></script>
   <script src="{{ asset("assets/vendor/js/bootstrap.js") }}"></script>

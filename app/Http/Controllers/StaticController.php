@@ -7,6 +7,7 @@ use App\Models\Contact;
 use App\Models\Gallery;
 use App\Models\QuestionAnswer;
 use App\Models\Service;
+use App\Models\Slider;
 use App\Models\SocialMedia;
 use App\Models\Testimonial;
 use App\Models\Type;
@@ -22,10 +23,11 @@ class StaticController extends Controller
 	}
 
 	public function company() {
+		$slides = Slider::all();
 		$services = Service::all();
 		$qna = QuestionAnswer::all();
 
-		return view("company", compact("services", "qna"));
+		return view("company", compact("services", "qna", "slides"));
 	}
 
 	public function testimonial() {

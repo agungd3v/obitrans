@@ -45,7 +45,7 @@
             Jl. Bandengan Selatan No. 43, Komplek Puri Delta Mas Blok C No. 36, Pejagalan, Penjaringan, Jakarta Utara
           </div>
         </div>
-        <div class="col-sm-12 col-md-6 mb-2 text-white">
+        <div class="col-sm-12 col-md-6 mb-2 text-white position-relative" style="z-index: 2">
           <p class="fw-bold">Contact</p>
           @foreach ($contacts as $contact)
             <div class="mb-1">{{ $contact->label }}: {{ $contact->value }}</div>
