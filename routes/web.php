@@ -48,4 +48,8 @@ Route::group(["prefix" => "user"], function() {
 	Route::delete("banner", [UserController::class, "deleteBanner"])->name("banner.delete");
 	Route::get("company", [UserController::class, "company"])->name("company");
 	Route::get("company/slide/data", [UserController::class, "companySlideData"])->name("company.slide.data");
+	Route::get("qna", [UserController::class, "qna"])->name("qna");
+	Route::get("qna/data", [UserController::class, "qnaData"])->name("qna.data");
+	Route::get("qna/data/{id}", [UserController::class, "showQna"])->name("qna.show");
+	Route::put("qna", [UserController::class, "updateQna"])->name("qna.update");
 });

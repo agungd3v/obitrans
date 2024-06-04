@@ -6,6 +6,7 @@ use App\Models\Banner;
 use App\Models\Car;
 use App\Models\Contact;
 use App\Models\Gallery;
+use App\Models\QuestionAnswer;
 use App\Models\Service;
 use App\Models\Slider;
 use App\Models\SocialMedia;
@@ -476,5 +477,39 @@ class UserController extends Controller
 		$data = Slider::all();
 
 		return DataTables::of($data)->toJson();
+	}
+
+	public function qna() {
+		return view("user.qna");
+	}
+
+	public function qnaData() {
+		$data = QuestionAnswer::all();
+
+		return DataTables::of($data)->toJson();
+	}
+
+	public function showQna(Request $request, $id) {
+		$data = QuestionAnswer::where("id", $id)->first();
+		return response()->json(["data" => $data]);
+	}
+
+	public function updateQna(Request $request) {
+		try {
+			DB::beginTransaction();
+
+			$qna = QuestionAnswer::where("id", $request->id)->first();
+			if (!$qna) throw new \Exception("Error");
+
+			$qna->question = $request->question;
+			$qna->answer = $request->answer;
+			$qna->save();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil mengubah QnA");
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
 	}
 }

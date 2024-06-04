@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Car;
 use App\Models\Contact;
 use App\Models\Gallery;
+use App\Models\QuestionAnswer;
 use App\Models\Service;
 use App\Models\SocialMedia;
 use App\Models\Testimonial;
@@ -22,8 +23,9 @@ class StaticController extends Controller
 
 	public function company() {
 		$services = Service::all();
+		$qna = QuestionAnswer::all();
 
-		return view("company", compact("services"));
+		return view("company", compact("services", "qna"));
 	}
 
 	public function testimonial() {

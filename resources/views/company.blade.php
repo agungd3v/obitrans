@@ -76,30 +76,16 @@
   </div>
 </div>
 <div class="company-qna row justify-content-center">
-  <div class="col-md-3">
-    <div class="service-box shadow px-4 py-5" style="height: 300px">
-      <p class="text-center nunito-sans mb-4 position-relative fs-5" style="color: #322DD2; font-style: italic; font-weight: 800; line-height: 1">Apa yang bisa kami berikan kepada pelanggan?</p>
-      <p class="mb-0 text-dark nunito-sans text-center">
-        Perusahaan kami dibangun dengan 3 nilai utama: kemudahan, kecepatan, dan kepuasan pelanggan. Kami selalu memprioritaskan pelanggan untuk membantu perusahaan Anda dalam menjalankan tugas.
-      </p>
+  @foreach ($qna as $item)
+    <div class="col-md-3">
+      <div class="service-box shadow px-4 py-5" style="height: 350px">
+        <p class="text-center nunito-sans mb-4 position-relative fs-5" style="color: #322DD2; font-style: italic; font-weight: 800; line-height: 1">{{ $item->question }}</p>
+        <p class="mb-0 text-dark nunito-sans text-center">
+          {{ $item->answer }}
+        </p>
+      </div>
     </div>
-  </div>
-  <div class="col-md-3">
-    <div class="service-box shadow px-4 py-5" style="height: 300px">
-      <p class="text-center nunito-sans mb-4 position-relative fs-5" style="color: #322DD2; font-style: italic; font-weight: 800; line-height: 1">Apa yang bisa kami berikan kepada pelanggan?</p>
-      <p class="mb-0 text-dark nunito-sans text-center">
-        Perusahaan kami dibangun dengan 3 nilai utama: kemudahan, kecepatan, dan kepuasan pelanggan. Kami selalu memprioritaskan pelanggan untuk membantu perusahaan Anda dalam menjalankan tugas.
-      </p>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="service-box shadow px-4 py-5" style="height: 300px">
-      <p class="text-center nunito-sans mb-4 position-relative fs-5" style="color: #322DD2; font-style: italic; font-weight: 800; line-height: 1">Apa yang bisa kami berikan kepada pelanggan?</p>
-      <p class="mb-0 text-dark nunito-sans text-center">
-        Perusahaan kami dibangun dengan 3 nilai utama: kemudahan, kecepatan, dan kepuasan pelanggan. Kami selalu memprioritaskan pelanggan untuk membantu perusahaan Anda dalam menjalankan tugas.
-      </p>
-    </div>
-  </div>
+  @endforeach
 </div>
 <div class="company-location">
   <div class="d-flex align-items-center justify-content-center mt-5">

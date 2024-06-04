@@ -149,6 +149,12 @@
                 <div>Sosial Media</div>
               </a>
             </li>
+            <li class="menu-item @yield("qna")">
+              <a href="{{ route("qna") }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-question-mark"></i>
+                <div>QnA</div>
+              </a>
+            </li>
           </ul>
         </aside>
         <div class="layout-page">
