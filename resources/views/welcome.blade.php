@@ -4,9 +4,9 @@
 @section("content")
 <div class="position-relative">
 	<img src="{{ asset("jumbotron.png") }}" class="img-fluid w-full" alt="jumbotron">
-	<div class="inter tagline">
+	{{-- <div class="inter tagline">
 		“Sewa mobil untuk kemudahan, kebebasan dan kenyamanan”
-	</div>
+	</div> --}}
 	<div class="section-rent shadow">
 		<p class="text-dark fw-semibold">Pilih Jenis Sewa:</p>
 		<div class="d-flex align-items-center gap-3">

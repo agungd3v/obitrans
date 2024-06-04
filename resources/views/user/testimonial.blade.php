@@ -40,7 +40,7 @@
               <tr>
                 <th class="">Author</th>
                 <th class="">Testimonial</th>
-                {{-- <th class=""></th> --}}
+                <th class=""></th>
               </tr>
             </thead>
           </table>
@@ -75,6 +75,29 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="delete" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Hapus Data</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="{{ route("testimonial.delete") }}" method="POST">
+        @method("DELETE")
+        @csrf
+        <input type="hidden" id="delete_testimoni_id" name="id" value="">
+        <div class="modal-body pt-2">
+          <div>
+            Apakah kamu yakin ingin menghapus testimonial ini?
+          </div>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-danger">Ya, Hapus!</button>
+          </div>
         </div>
       </form>
     </div>
@@ -126,38 +149,25 @@
       {data: "content", render: function(data, type, row, meta) {
         return row.content;
       }},
-      // {data: "action", render: function (data, type, row, meta) {
-      //   return `
-      //     <div class="text-nowrap">
-      //       <button class="btn btn-sm btn-success" style="padding: 6px 12px; border-radius: 8px" onclick="showData('${row.id}')" data-bs-toggle="modal" data-bs-target="#update">
-      //         <div class="flex items-center gap-1">
-      //           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-      //             <mask id="mask0_1797_10419" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="14" height="14">
-      //             <path fill-rule="evenodd" clip-rule="evenodd" d="M13.8058 3.75417C14.0658 4.01417 14.0658 4.43417 13.8058 4.69417L12.5858 5.91417L10.0858 3.41417L11.3058 2.19417C11.4304 2.06933 11.5995 1.99918 11.7758 1.99918C11.9522 1.99918 12.1213 2.06933 12.2458 2.19417L13.8058 3.75417ZM1.99915 13.6675V11.6408C1.99915 11.5475 2.03248 11.4675 2.09915 11.4008L9.37248 4.1275L11.8725 6.6275L4.59248 13.9008C4.53248 13.9675 4.44581 14.0008 4.35915 14.0008H2.33248C2.14581 14.0008 1.99915 13.8542 1.99915 13.6675Z" fill="black"/>
-      //             </mask>
-      //             <g mask="url(#mask0_1797_10419)">
-      //             <rect width="16" height="16" fill="#FFF"/>
-      //             </g>
-      //           </svg>
-      //           <span class="text-white" style="font-size: 14px !important">Ubah</span>
-      //         </div>
-      //       </button>
-      //       <button class="btn btn-sm btn-danger" style="padding: 6px 12px; border-radius: 8px" onclick="deleteData('${row.id}', '${row.label}')" data-bs-toggle="modal" data-bs-target="#delete">
-      //         <div class="flex items-center gap-1">
-      //           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      //             <mask id="mask0_1900_17101" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="3" y="2" width="10" height="12">
-      //             <path fill-rule="evenodd" clip-rule="evenodd" d="M10.3334 2.66667H12C12.3667 2.66667 12.6667 2.96667 12.6667 3.33333C12.6667 3.7 12.3667 4 12 4H4.00004C3.63337 4 3.33337 3.7 3.33337 3.33333C3.33337 2.96667 3.63337 2.66667 4.00004 2.66667H5.66671L6.14004 2.19333C6.26004 2.07333 6.43337 2 6.60671 2H9.39337C9.56671 2 9.74004 2.07333 9.86004 2.19333L10.3334 2.66667ZM5.33337 14C4.60004 14 4.00004 13.4 4.00004 12.6667V6C4.00004 5.26667 4.60004 4.66667 5.33337 4.66667H10.6667C11.4 4.66667 12 5.26667 12 6V12.6667C12 13.4 11.4 14 10.6667 14H5.33337Z" fill="black"/>
-      //             </mask>
-      //             <g mask="url(#mask0_1900_17101)">
-      //             <rect width="16" height="16" fill="#FFF"/>
-      //             </g>
-      //           </svg>
-      //           <span class="text-white" style="font-size: 14px !important">Hapus</span>
-      //         </div>
-      //       </button>
-      //     </div>
-      //   `
-      // }}
+      {data: "action", render: function (data, type, row, meta) {
+        return `
+          <div class="text-nowrap">
+            <button class="btn btn-sm btn-danger" style="padding: 6px 12px; border-radius: 8px" onclick="deleteData('${row.id}')" data-bs-toggle="modal" data-bs-target="#delete">
+              <div class="flex items-center gap-1">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <mask id="mask0_1900_17101" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="3" y="2" width="10" height="12">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M10.3334 2.66667H12C12.3667 2.66667 12.6667 2.96667 12.6667 3.33333C12.6667 3.7 12.3667 4 12 4H4.00004C3.63337 4 3.33337 3.7 3.33337 3.33333C3.33337 2.96667 3.63337 2.66667 4.00004 2.66667H5.66671L6.14004 2.19333C6.26004 2.07333 6.43337 2 6.60671 2H9.39337C9.56671 2 9.74004 2.07333 9.86004 2.19333L10.3334 2.66667ZM5.33337 14C4.60004 14 4.00004 13.4 4.00004 12.6667V6C4.00004 5.26667 4.60004 4.66667 5.33337 4.66667H10.6667C11.4 4.66667 12 5.26667 12 6V12.6667C12 13.4 11.4 14 10.6667 14H5.33337Z" fill="black"/>
+                  </mask>
+                  <g mask="url(#mask0_1900_17101)">
+                  <rect width="16" height="16" fill="#FFF"/>
+                  </g>
+                </svg>
+                <span class="text-white" style="font-size: 14px !important">Hapus</span>
+              </div>
+            </button>
+          </div>
+        `
+      }}
     ],
     fnInfoCallback: function( oSettings, iStart, iEnd, iMax, iTotal, sPre ) {
       $(".car-image").on("mouseenter", function() {
@@ -204,9 +214,8 @@
     });
   }
 
-  function deleteData(id, title) {
-    $("#id-car-delete").val(id);
-    $("#data-delete-label").text(title + "!");
+  function deleteData(id) {
+    $("#delete_testimoni_id").val(id);
   }
 </script>
 @endpush

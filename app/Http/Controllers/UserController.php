@@ -251,6 +251,26 @@ class UserController extends Controller
 		}
 	}
 
+	public function testimonialDelete(Request $request) {
+		try {
+			DB::beginTransaction();
+
+			$testi = Testimonial::where("id", $request->id)->first();
+
+			if (File::exists(public_path($testi->author_image))) {
+				File::delete(public_path($testi->author_image));
+			}
+
+			$testi->delete();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil menghapus testimonial!");
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
 	public function contact() {
 		return view("user.contact");
 	}
