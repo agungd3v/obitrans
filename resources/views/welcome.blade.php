@@ -10,7 +10,7 @@
 <div class="position-relative mt-3">
 	<div class="slick slick-custom">
 		@foreach ($baners as $baner)
-			<div class="img-welcome">
+			<div class="img-welcome d-flex justify-content-center">
 				<img src="{{ asset($baner->banner_image) }}" class="img-fluid w-full" alt="jumbotron">
 			</div>
 		@endforeach

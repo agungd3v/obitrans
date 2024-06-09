@@ -25,7 +25,7 @@
 </head>
 <body>
   <div class="wrapper d-flex flex-column vh-100 overflow-hidden d-none">
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-content">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-content" style="position: sticky; top: 0">
       <div class="container-fluid">
         <a href="/">
           <img src="{{ asset("logo.png") }}" alt="logo" width="148" height="51">
@@ -160,6 +160,15 @@
       $(".wrapper").addClass("min-vh-100");
       setTimeout(() => $(".welcome-splash").addClass("animate-hidden"), 1000);
       setTimeout(() => $(".welcome-splash").remove(), 2000);
+
+      $(window).scroll(function (event) {
+        var scroll = $(window).scrollTop();
+        if (scroll >= 100) {
+          $(".navbar").addClass("opacity-75");
+        } else {
+          $(".navbar").removeClass("opacity-75");
+        }
+      });
     });
   </script>
   @stack("script")

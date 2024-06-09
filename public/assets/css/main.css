@@ -373,6 +373,11 @@ footer {
   animation: rotation 1.5s linear infinite;
 }
 
+.opacity-75 {
+  /* background-color: #03007D; */
+  opacity: 0.9;
+}
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
