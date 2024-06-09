@@ -53,6 +53,14 @@
             </li>
             <li class="nav-item">
               <div class="position-relative me-5 navbar-item">
+                <a href="/unit" class="text-white nunito-sans fw-bold">Unit List</a>
+                @hasSection ("unit-active")
+                  <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>
+                @endif
+              </div>
+            </li>
+            <li class="nav-item">
+              <div class="position-relative me-5 navbar-item">
                 <a href="/testimonial" class="text-white nunito-sans fw-bold">Testimonial</a>
                 @hasSection ("testi-active")
                   <div class="position-absolute w-100 left-0" style="background: #322DD2; height: 4px; bottom: -23px"></div>

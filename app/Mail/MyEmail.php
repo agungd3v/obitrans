@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Address;
 
 class MyEmail extends Mailable
 {
@@ -18,9 +19,9 @@ class MyEmail extends Mailable
 	 *
 	 * @return void
 	 */
-	public function __construct()
+	public function __construct(private $companyName, private $phone, private $email, private $message)
 	{
-		//
+		// 
 	}
 
 	/**
@@ -31,7 +32,8 @@ class MyEmail extends Mailable
 	public function envelope()
 	{
 		return new Envelope(
-			subject: 'My Email',
+			from: new Address(env("MAIL_FROM_ADDRESS"), "Obitrans website"),
+			subject: 'Hubungi kami, jangan ragu untuk menghubungi kami',
 		);
 	}
 
@@ -43,7 +45,13 @@ class MyEmail extends Mailable
 	public function content()
 	{
 		return new Content(
-			view: 'view.name',
+			view: 'email.contact',
+			with: [
+				"companyName" => $this->companyName,
+				"phone" => $this->phone,
+				"email" => $this->email,
+				"msg" => $this->message
+			]
 		);
 	}
 

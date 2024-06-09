@@ -11,6 +11,8 @@ Route::get("testimonial", [StaticController::class, "testimonial"]);
 Route::get("contact", [StaticController::class, "contact"]);
 Route::get("rent/{type}", [StaticController::class, "rent"]);
 Route::post("rent/data", [StaticController::class, "rentData"]);
+Route::get("unit", [StaticController::class, "unit"]);
+Route::post("contactme", [StaticController::class, "sendEmail"]);
 
 Route::get("login", [AuthController::class, "loginPage"])->name("login");
 Route::post("login", [AuthController::class, "login"])->name("login.post");

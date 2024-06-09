@@ -70,20 +70,46 @@
         <input type="text" autocomplete="off" class="form-control" name="name" id="name" placeholder="Masukkan nama Anda / Perusahaan Anda" style="border-radius: 12px; height: 44px">
       </div>
       <div class="d-flex flex-column gap-1 mb-3">
-        <label for="name" style="color: #3A3A3A">Hubungi Saya di nomor</label>
-        <input type="text" autocomplete="off" class="form-control" name="name" id="name" placeholder="Masukkan nomor telepon Anda" style="border-radius: 12px; height: 44px">
+        <label for="phone" style="color: #3A3A3A">Hubungi Saya di nomor</label>
+        <input type="text" autocomplete="off" class="form-control" name="phone" id="phone" placeholder="Masukkan nomor telepon Anda" style="border-radius: 12px; height: 44px">
       </div>
       <div class="d-flex flex-column gap-1 mb-3">
-        <label for="name" style="color: #3A3A3A">Hubungi saya di email</label>
-        <input type="text" autocomplete="off" class="form-control" name="name" id="name" placeholder="Masukan email Anda" style="border-radius: 12px; height: 44px">
+        <label for="email" style="color: #3A3A3A">Hubungi saya di email</label>
+        <input type="text" autocomplete="off" class="form-control" name="email" id="email" placeholder="Masukan email Anda" style="border-radius: 12px; height: 44px">
       </div>
       <div class="d-flex flex-column gap-1 mb-3">
-        <textarea name="" id="" rows="5" class="form-control overflow-hidden" style="border-radius: 12px" autocomplete="off"></textarea>
+        <textarea name="message" id="message" rows="5" class="form-control overflow-hidden" style="border-radius: 12px" autocomplete="off"></textarea>
       </div>
       <div class="d-flex justify-content-end">
-        <button class="button-send-message">Kirim</button>
+        <button class="button-send-message" onclick="sendEmail(this)">Kirim</button>
       </div>
     </div>
   </div>
 </div>
 @endsection
+
+@push('script')
+<script>
+  function sendEmail(element) {
+    $(element).attr("disabled", true);
+    $.ajax({
+      url: "/contactme",
+      type: "POST",
+      data: {
+        _token: "{{ csrf_token() }}",
+        companyName: $("#name").val(),
+        phone: $("#phone").val(),
+        email: $("#email").val(),
+        message: $("#message").val()
+      },
+      success: function(res) {
+        alert(res.message);
+        $(element).attr("disabled", false);
+      },
+      error: function(error) {
+        $(element).attr("disabled", false);
+      }
+    });
+  }
+</script>
+@endpush

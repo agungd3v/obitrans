@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MyEmail;
 use App\Models\Banner;
 use App\Models\Car;
 use App\Models\Contact;
@@ -13,6 +14,7 @@ use App\Models\SocialMedia;
 use App\Models\Testimonial;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Yajra\DataTables\Facades\DataTables;
 
 class StaticController extends Controller
@@ -57,5 +59,23 @@ class StaticController extends Controller
 		$cars = Car::where("type_id", $request->type)->orderBy("id", "desc")->get();
 
 		return DataTables::of($cars)->toJson();
+	}
+
+	public function sendEmail(Request $request) {
+		try {
+			Mail::to("agungd3v@gmail.com")->send(
+				new MyEmail($request->companyName, $request->phone, $request->email, $request->message)
+			);
+			
+			return response()->json(["message" => "Terimakasih, kami akan secepatnya merespon pertanyaan anda"]);
+		} catch (\Exception $e) {
+			return response()->json(["message" => $e->getMessage()], 400);
+		}
+	}
+
+	public function unit() {
+		$cars = Car::where("type_id", 1)->get();
+
+		return view("unit", compact("cars"));
 	}
 }
