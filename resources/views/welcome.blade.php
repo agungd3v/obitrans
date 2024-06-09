@@ -7,8 +7,8 @@
 @endpush
 
 @section("content")
-<div class="position-relative">
-	<div class="slick">
+<div class="position-relative mt-3">
+	<div class="slick slick-custom">
 		@foreach ($baners as $baner)
 			<div class="img-welcome">
 				<img src="{{ asset($baner->banner_image) }}" class="img-fluid w-full" alt="jumbotron">
