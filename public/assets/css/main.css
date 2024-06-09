@@ -561,7 +561,19 @@ footer {
   height: 80px;
 }
 
+.img-welcome {
+  height: 486px !important;
+}
+
 @media only screen and (max-width: 512px) {
+  .img-welcome {
+    height: 200px !important;
+  }
+
+  .img-welcome img {
+    max-width: unset !important;
+  }
+
   .rent-info {
     font-size: 12px !important;
     padding: 0 20px;

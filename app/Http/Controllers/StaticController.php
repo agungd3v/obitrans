@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\Car;
 use App\Models\Contact;
 use App\Models\Gallery;
@@ -18,8 +19,9 @@ class StaticController extends Controller
 {
 	public function home() {
 		$services = Service::all();
+		$baners = Banner::all();
 
-		return view("welcome", compact("services"));
+		return view("welcome", compact("services", "baners"));
 	}
 
 	public function company() {

@@ -60,7 +60,7 @@
           <div class="col-12 col-md-4 col-lg-3 mb-4">
             <div class="bg-white shadow" style="padding: 24px; border-radius: 12px">
               <div class="overflow-hidden" style="width: 100%; height: 200px; background: #D8E3FF; border-radius: 8px">
-                <img src="/${data.data[index].image}" class="img-fluid" alt="cars image">
+                <img src="/${data.data[index].image}" class="img-fluid w-100 h-100" alt="cars image">
               </div>
               <h3 class="text-dark mt-3 fs-4">${data.data[index].label}</h3>
               <div class="d-flex align-items-center justify-content-between ${type == 2 ? "mb-2" : "mb-5"}">
@@ -78,7 +78,11 @@
                 </div>
               </div>
               ${type == 2 ? `<span class="text-dark" style="font-size: 12px">Harga per hari :</span>` : ""}
-              ${type == 2 ? `<div class="text-dark fs-4 fw-bold mb-3">Rp. 1.000.000</div>` : ""}
+              ${type == 2 ? `
+                <div class="text-dark fs-4 fw-bold mb-3">
+                  ${Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR", minimumFractionDigits: 0}).format(data.data[index].price_per_day)}
+                </div>
+              ` : ""}
               <a href="#" class="d-block text-dark text-center fw-bold rounded-3 fs-5" style="background: #FFC700; padding: 10px 0">
                 Pesan Sekarang
               </a>

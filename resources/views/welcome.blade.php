@@ -1,12 +1,20 @@
 @extends("layouts.static-layout")
 @section("home-active", true)
 
+@push('style')
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+@endpush
+
 @section("content")
 <div class="position-relative">
-	<img src="{{ asset("jumbotron.png") }}" class="img-fluid w-full" alt="jumbotron">
-	{{-- <div class="inter tagline">
-		“Sewa mobil untuk kemudahan, kebebasan dan kenyamanan”
-	</div> --}}
+	<div class="slick">
+		@foreach ($baners as $baner)
+			<div class="img-welcome">
+				<img src="{{ asset($baner->banner_image) }}" class="img-fluid w-full" alt="jumbotron">
+			</div>
+		@endforeach
+	</div>
 	<div class="section-rent shadow">
 		<p class="text-dark fw-semibold">Pilih Jenis Sewa:</p>
 		<div class="d-flex align-items-center gap-3">
@@ -63,3 +71,18 @@
 	</div>
 </div>
 @endsection
+
+@push('script')
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  $(".slick").slick({
+    dots: false,
+    infinite: true,
+    autoplay: true,
+    arrows: false,
+    speed: 500,
+    // fade: true,
+    cssEase: 'linear'
+  })
+</script>
+@endpush
