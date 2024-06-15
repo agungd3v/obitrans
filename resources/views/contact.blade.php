@@ -51,10 +51,12 @@
             <div class="mb-1">{{ $contact->label }}: {{ $contact->value }}</div>
           @endforeach
           <div class="fw-bold my-3">Social Media</div>
-          <div class="d-flex align-items-center gap-1">
+          <div class="d-flex flex-column gap-2">
             @foreach ($socials as $social)
-              <img src="{{ asset("instagram.png") }}" class="img-fluid" width="30" height="30" alt="instagram obitrans indonesia">
-              {{ $social->value }}
+              <a href="#" class="text-white">
+                <img src="{{ asset($social->label .".png") }}" class="img-fluid" width="30" height="30" alt="Social media indonesia">
+                {{ $social->value }}
+              </a>
             @endforeach
           </div>
         </div>

@@ -31,7 +31,8 @@
     <div class="card">
       <div class="card-body">
         <div class="w-full">
-          <table id="table" class="table">
+          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add">Tambah Social Media</button>
+          <table id="table" class="table mt-3">
             <thead>
               <tr>
                 <th class="">Label</th>
@@ -42,6 +43,61 @@
           </table>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="add" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Tambah Social Media</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <form action="{{ route("social.store") }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="modal-body">
+          <div class="d-flex flex-column gap-1 mb-3">
+            <label for="label">Label</label>
+            <select name="label" id="label" class="form-control">
+              <option value="instagram" selected>Instagram</option>
+              <option value="facebook">Facebook</option>
+              <option value="tiktok">Tiktok</option>
+              <option value="youtube">Youtube</option>
+            </select>
+          </div>
+          <div class="d-flex flex-column gap-1 mb-3">
+            <label for="value">Username</label>
+            <input type="text" class="form-control" autocomplete="off" id="value" name="value">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="delete" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Hapus Data</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="{{ route("social.delete") }}" method="POST">
+        @method("DELETE")
+        @csrf
+        <input type="hidden" id="delete_social_id" name="id" value="">
+        <div class="modal-body pt-2">
+          <div>
+            Apakah kamu yakin ingin menghapus data ini?
+          </div>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-danger">Ya, Hapus!</button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -131,6 +187,19 @@
                 <span class="text-white" style="font-size: 14px !important">Ubah</span>
               </div>
             </button>
+            <button class="btn btn-sm btn-danger" style="padding: 6px 12px; border-radius: 8px" onclick="deleteData('${row.id}')" data-bs-toggle="modal" data-bs-target="#delete">
+              <div class="flex items-center gap-1">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <mask id="mask0_1900_17101" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="3" y="2" width="10" height="12">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M10.3334 2.66667H12C12.3667 2.66667 12.6667 2.96667 12.6667 3.33333C12.6667 3.7 12.3667 4 12 4H4.00004C3.63337 4 3.33337 3.7 3.33337 3.33333C3.33337 2.96667 3.63337 2.66667 4.00004 2.66667H5.66671L6.14004 2.19333C6.26004 2.07333 6.43337 2 6.60671 2H9.39337C9.56671 2 9.74004 2.07333 9.86004 2.19333L10.3334 2.66667ZM5.33337 14C4.60004 14 4.00004 13.4 4.00004 12.6667V6C4.00004 5.26667 4.60004 4.66667 5.33337 4.66667H10.6667C11.4 4.66667 12 5.26667 12 6V12.6667C12 13.4 11.4 14 10.6667 14H5.33337Z" fill="black"/>
+                  </mask>
+                  <g mask="url(#mask0_1900_17101)">
+                  <rect width="16" height="16" fill="#FFF"/>
+                  </g>
+                </svg>
+                <span class="text-white" style="font-size: 14px !important">Hapus</span>
+              </div>
+            </button>
           </div>
         `
       }}
@@ -173,6 +242,10 @@
         $("#social_value").val(response.data.value);
       }
     });
+  }
+
+  function deleteData(id) {
+    $("#delete_social_id").val(id);
   }
 </script>
 @endpush

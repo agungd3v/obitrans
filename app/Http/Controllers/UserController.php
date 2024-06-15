@@ -352,6 +352,23 @@ class UserController extends Controller
 		return view("user.social");
 	}
 
+	public function socialStore(Request $request) {
+		try {
+			DB::beginTransaction();
+
+			$social = new SocialMedia();
+			$social->label = $request->label;
+			$social->value = $request->value;
+			$social->save();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil menambahkan sosial media");
+		} catch (\Exception $e) {
+			DB::beginTransaction();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
 	public function socialData(Request $request) {
 		$social = SocialMedia::all();
 
@@ -373,6 +390,23 @@ class UserController extends Controller
 
 			DB::commit();
 			return redirect()->back()->with("success", "Berhasil mengubah data sosial media!");
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
+	public function deleteSocial(Request $request) {
+		try {
+			DB::beginTransaction();
+
+			$social = SocialMedia::where("id", $request->id)->first();
+			if (!$social) throw new \Exception("Error, social media tidak ditemukan!");
+
+			$social->delete();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil menghapus sosial media!");
 		} catch (\Exception $e) {
 			DB::rollBack();
 			return redirect()->back()->with("error", $e->getMessage());

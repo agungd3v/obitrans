@@ -43,6 +43,8 @@ Route::group(["prefix" => "user", "middleware" => ["auth"]], function() {
 	Route::get("contact/data/{id}", [UserController::class, "showContact"])->name("contact.show.data");
 	Route::put("contact", [UserController::class, "updateContact"])->name("contact.update");
 	Route::get("social", [UserController::class, "social"])->name("social");
+	Route::post("social", [UserController::class, "socialStore"])->name("social.store");
+	Route::delete("social", [UserController::class, "deleteSocial"])->name("social.delete");
 	Route::get("social/data", [UserController::class, "socialData"])->name("social.data");
 	Route::get("social/data/{id}", [UserController::class, "showSocial"])->name("social.show.data");
 	Route::put("social", [UserController::class, "updateSocial"])->name("social.update");
