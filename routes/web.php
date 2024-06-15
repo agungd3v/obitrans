@@ -34,7 +34,9 @@ Route::group(["prefix" => "user", "middleware" => ["auth"]], function() {
 	Route::delete("gallery", [UserController::class, "deleteGallery"])->name("gallery.delete");
 	Route::get("testimonial", [UserController::class, "testimonial"])->name("testimonial");
 	Route::get("testimonial/data", [UserController::class, "testimonialData"])->name("testimonial.data");
+	Route::get("testimonial/show/{id}", [UserController::class, "testimonialShow"])->name("testimonial.show");
 	Route::post("testimonial", [UserController::class, "testimonialStore"])->name("testimonial.store");
+	Route::put("testimonial", [UserController::class, "updateTestimonial"])->name("testimonial.update");
 	Route::delete("testimonial", [UserController::class, "testimonialDelete"])->name("testimonial.delete");
 	Route::get("contact", [UserController::class, "contact"])->name("contact");
 	Route::get("contact/data", [UserController::class, "contactData"])->name("contact.data");

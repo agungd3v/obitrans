@@ -49,6 +49,35 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="update" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Testimonial</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <form action="{{ route("testimonial.update") }}" method="POST" enctype="multipart/form-data">
+        @method("PUT")
+        @csrf
+        <input type="hidden" id="update_testimoni_id" name="id" value="">
+        <div class="modal-body">
+          <div class="d-flex flex-column gap-1 mb-3">
+            <label for="author_name">Nama Author</label>
+            <input type="text" name="author_name" id="author_name_update" class="form-control" autocomplete="off">
+          </div>
+          <div class="d-flex flex-column gap-1 mb-3">
+            <label for="content">Testimoni</label>
+            <textarea type="text" name="content" rows="5" id="content_update" class="form-control" autocomplete="off"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <div class="modal fade" id="add" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -152,6 +181,19 @@
       {data: "action", render: function (data, type, row, meta) {
         return `
           <div class="text-nowrap">
+            <button class="btn btn-sm btn-success" style="padding: 6px 12px; border-radius: 8px" onclick="showData('${row.id}')" data-bs-toggle="modal" data-bs-target="#update">
+              <div class="flex items-center gap-1">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <mask id="mask0_1797_10419" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="14" height="14">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M13.8058 3.75417C14.0658 4.01417 14.0658 4.43417 13.8058 4.69417L12.5858 5.91417L10.0858 3.41417L11.3058 2.19417C11.4304 2.06933 11.5995 1.99918 11.7758 1.99918C11.9522 1.99918 12.1213 2.06933 12.2458 2.19417L13.8058 3.75417ZM1.99915 13.6675V11.6408C1.99915 11.5475 2.03248 11.4675 2.09915 11.4008L9.37248 4.1275L11.8725 6.6275L4.59248 13.9008C4.53248 13.9675 4.44581 14.0008 4.35915 14.0008H2.33248C2.14581 14.0008 1.99915 13.8542 1.99915 13.6675Z" fill="black"/>
+                  </mask>
+                  <g mask="url(#mask0_1797_10419)">
+                  <rect width="16" height="16" fill="#FFF"/>
+                  </g>
+                </svg>
+                <span class="text-white" style="font-size: 14px !important">Update</span>
+              </div>
+            </button>
             <button class="btn btn-sm btn-danger" style="padding: 6px 12px; border-radius: 8px" onclick="deleteData('${row.id}')" data-bs-toggle="modal" data-bs-target="#delete">
               <div class="flex items-center gap-1">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -200,16 +242,11 @@
   }
 
   function showData(id) {
-    $.get(`/user/car/show/${id}`, function(response, status) {
-      console.log(response);
+    $.get(`/user/testimonial/show/${id}`, function(response, status) {
       if (status == "success") {
-        $("#rent-id").val(response.data.id);
-        $("#rent-update").val(response.data.type_id);
-        $("#label-update").val(response.data.label);
-        $("#fuel-update").val(response.data.fuel);
-        $("#capacity-update").val(response.data.capacity);
-        $("#gear-update").val(response.data.gear);
-        $("#price-update").val(response.data.price_per_day);
+        $("#update_testimoni_id").val(response.data.id);
+        $("#author_name_update").val(response.data.author_name);
+        $("#content_update").val(response.data.content);
       }
     });
   }

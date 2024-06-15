@@ -240,6 +240,12 @@ class UserController extends Controller
 		return DataTables::of($testimonials)->toJson();
 	}
 
+	public function testimonialShow(Request $request, $id) {
+		$testi = Testimonial::where("id", $id)->first();
+
+		return response()->json(["data" => $testi]);
+	}
+
 	public function testimonialStore(Request $request) {
 		$imgName = "";
 
@@ -267,6 +273,25 @@ class UserController extends Controller
 				File::delete(public_path("author/". $imgName));
 			}
 
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
+	public function updateTestimonial(Request $request) {
+		try {
+			DB::beginTransaction();
+
+			$testi = Testimonial::where("id", $request->id)->first();
+			if (!$testi) throw new \Exception("Error, testimonial not found!");
+
+			$testi->author_name = $request->author_name;
+			$testi->content = $request->content;
+			$testi->save();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil mengubah testimonial!");
+		} catch (\Exception $e) {
 			DB::rollBack();
 			return redirect()->back()->with("error", $e->getMessage());
 		}
