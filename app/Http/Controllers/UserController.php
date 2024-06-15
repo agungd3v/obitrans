@@ -473,6 +473,82 @@ class UserController extends Controller
 		return view("user.company");
 	}
 
+	public function storeComapny(Request $request) {
+		$imgName = "";
+
+		try {
+			DB::beginTransaction();
+
+			if (!$request->hasFile("company_image")) throw new \Exception("Gambar tidak boleh kosong");
+
+			$slider = new Slider();
+
+			$ext = $request->file("company_image")->extension();
+			$imgName = date("dmyHis") ."_". date("His") .".". $ext;
+			$this->validate($request, ["company_image" => "file|image|max:2048"]);
+			$request->file("company_image")->move("company", $imgName);
+
+			$slider->slide_image = "company/". $imgName;
+			$slider->save();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil menambah data gambar!");
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
+	public function updateCompany(Request $request) {
+		$imgName = "";
+
+		try {
+			DB::beginTransaction();
+
+			if (!$request->hasFile("slide_image")) throw new \Exception("Gambar tidak boleh kosong");
+
+			$slider = Slider::where("id", $request->id)->first();
+
+			if (File::exists(public_path($slider->slide_image))) {
+				File::delete(public_path($slider->slide_image));
+			}
+
+			$ext = $request->file("slide_image")->extension();
+			$imgName = date("dmyHis") ."_". date("His") .".". $ext;
+			$this->validate($request, ["slide_image" => "file|image|max:2048"]);
+			$request->file("slide_image")->move("company", $imgName);
+
+			$slider->slide_image = "company/". $imgName;
+			$slider->save();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil mengubah gambara!");
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
+	public function deleteCompany(Request $request) {
+		try {
+			DB::beginTransaction();
+
+			$slider = Slider::where("id", $request->id)->first();
+
+			if (File::exists(public_path($slider->slide_image))) {
+				File::delete(public_path($slider->slide_image));
+			}
+
+			$slider->delete();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil menghapus gambar!");
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
 	public function companySlideData() {
 		$data = Slider::all();
 

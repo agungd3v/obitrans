@@ -54,6 +54,9 @@ Route::group(["prefix" => "user", "middleware" => ["auth"]], function() {
 	Route::put("banner", [UserController::class, "bannerUpdate"])->name("banner.update");
 	Route::delete("banner", [UserController::class, "deleteBanner"])->name("banner.delete");
 	Route::get("company", [UserController::class, "company"])->name("company");
+	Route::post("company", [UserController::class, "storeComapny"])->name("company.store");
+	Route::delete("company", [UserController::class, "deleteCompany"])->name("company.delete");
+	Route::put("company", [UserController::class, "updateCompany"])->name("company.update");
 	Route::get("company/slide/data", [UserController::class, "companySlideData"])->name("company.slide.data");
 	Route::get("qna", [UserController::class, "qna"])->name("qna");
 	Route::get("qna/data", [UserController::class, "qnaData"])->name("qna.data");

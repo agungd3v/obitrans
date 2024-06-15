@@ -45,6 +45,77 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="add" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Tambah Gambar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <form action="{{ route("company.store") }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="modal-body">
+          <div class="flex-column gap-1 mb-3">
+            <label for="company_image">Image</label>
+            <input type="file" name="company_image" id="company_image" class="form-control" autocomplete="off">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="update" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <form action="{{ route("company.update") }}" method="POST" enctype="multipart/form-data">
+        @method("PUT")
+        @csrf
+        <input type="hidden" name="id" id="slide_id_update">
+        <div class="modal-body">
+          <div class="flex-column gap-1 mb-3">
+            <label for="slide_image">Image</label>
+            <input type="file" name="slide_image" id="slide_image" class="form-control" autocomplete="off">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="delete" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Hapus Data</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="{{ route("company.delete") }}" method="POST">
+        @method("DELETE")
+        @csrf
+        <input type="hidden" id="slide_id" name="id" value="">
+        <div class="modal-body pt-2">
+          <div>
+            Apakah kamu yakin ingin menghapus banner ini?
+          </div>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-danger">Ya, Hapus!</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 @endsection
 
 @push("script")
@@ -151,15 +222,11 @@
   }
 
   function showData(id) {
-    $.get(`/user/banner/data/${id}`, function(response, status) {
-      if (status == "success") {
-        $("#banner_id").val(response.data.id);
-      }
-    });
+    $("#slide_id_update").val(id);
   }
 
   function deleteData(id, title) {
-    $("#delete_banner_id").val(id);
+    $("#slide_id").val(id);
   }
 </script>
 @endpush
