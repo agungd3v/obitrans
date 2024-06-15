@@ -23,6 +23,9 @@
           @forelse ($galleries as $gallery)
             <div class="col-sm-12 col-md-3 mt-3">
               <img src="/{{ $gallery->path }}" class="img-fluid" alt="">
+              <div class="mt-2">
+                <button class="w-100 btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete" onclick="deleteImage({{ $gallery->id }})">Hapus Gambar</button>
+              </div>
             </div>
           @empty
             <div class="text-center mt-3">Belum ada gambar yang di tambahkan</div>
@@ -32,7 +35,7 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="add" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+<div class="modal fade" id="add" tabindex="-1" data-bs-backdrop="static">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -52,4 +55,35 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="delete" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Hapus Data</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="{{ route("gallery.delete") }}" method="POST">
+        @method("DELETE")
+        @csrf
+        <input type="hidden" id="gallery_id" name="id" value="">
+        <div class="modal-body pt-2">
+          <div>
+            Apakah kamu yakin ingin menghapus gambar ini?
+          </div>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-danger">Ya, Hapus!</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 @endsection
+
+@push('script')
+<script>
+  function deleteImage(id) {
+    $("#gallery_id").val(id);
+  }
+</script>
+@endpush

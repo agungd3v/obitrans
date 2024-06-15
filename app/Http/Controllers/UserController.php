@@ -210,6 +210,26 @@ class UserController extends Controller
 		}
 	}
 
+	public function deleteGallery(Request $request) {
+		try {
+			DB::beginTransaction();
+
+			$galleries = Gallery::where("id", $request->id)->first();
+
+			if (File::exists(public_path($galleries->path))) {
+				File::delete(public_path($galleries->path));
+			}
+
+			$galleries->delete();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil menghapus gambar!");
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
 	public function testimonial() {
 		return view("user.testimonial");
 	}
