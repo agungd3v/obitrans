@@ -66,6 +66,13 @@
     <div class="right">
       <p class="text-dark fw-bold fs-5">Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaan.</p>
       <div class="d-flex flex-column gap-1 mt-3 mb-3">
+        <label for="rent" style="color: #3A3A3A">Pilih Jenis Sewa</label>
+        <select name="rent" id="rent" class="form-control">
+          <option value="Corporate" selected>Corporate</option>
+          <option value="Hariaan Bali">Harian Bali</option>
+        </select>
+      </div>
+      <div class="d-flex flex-column gap-1 mt-3 mb-3">
         <label for="name" style="color: #3A3A3A">Nama / Nama Perusahaan</label>
         <input type="text" autocomplete="off" class="form-control" name="name" id="name" placeholder="Masukkan nama Anda / Perusahaan Anda" style="border-radius: 12px; height: 44px">
       </div>

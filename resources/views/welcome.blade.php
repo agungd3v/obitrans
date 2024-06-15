@@ -22,7 +22,7 @@
 				Corporate
 			</a>
 			<a href="/rent/harian">
-				Harian
+				Harian Bali
 			</a>
 		</div>
 	</div>
@@ -33,6 +33,9 @@
 	</div>
 	<div class="inter fs-5 text-dark text-center">
 		<strong>PT. Obitrans Indonesia</strong> merupakan salah satu Perusahaan Rental Mobil di Indonesia yang saat ini berlokasi di Jakarta dan Bali. Kami menawarkan layanan sewa mobil, dengan paket perawatan opsional, untuk memenuhi kebutuhan kendaraan operasional perusahaan. Kami juga menyediakan layanan Car Ownership Program (COP) sesuai permintaan pelanggan.
+	</div>
+	<div class="d-flex justify-content-center mt-4">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/8NY8gYmKpys?si=Vef4ta0H9bQc5Mln" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 	</div>
 	<div class="d-flex align-items-center justify-content-center mt-5">
 		<h2 class="nunito-sans">Visi Misi Kami</h2>

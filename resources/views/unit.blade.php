@@ -8,8 +8,19 @@
   </div>
   <img src="{{ asset("rent_corporate.png") }}" class="img-fluid" alt="sewa corporate">
 </div>
-<div class="text-center text-dark fs-5 rent-info mb-5">
+<div class="text-center text-dark fs-5 rent-info mb-4">
   Kami memberikan pelayanan terbaik untuk setiap pelanggan. Harga yang kompetitif dengan kualitas dan performa layanan yang memuaskan. Kondisi unit kendaraan prima dan terawat agar pelanggan mendapatkan kenyamanan selama perjalanan untuk berbagai keperluan Anda baik dinas, pribadi dan keluarga
+</div>
+<div class="section-rent shadow mb-5">
+  <p class="text-dark fw-semibold">Pilih Jenis Sewa:</p>
+  <div class="d-flex align-items-center gap-3">
+    <a href="/rent/corporate">
+      Corporate
+    </a>
+    <a href="/rent/harian">
+      Harian Bali
+    </a>
+  </div>
 </div>
 <div style="padding: 0 40px; margin-bottom: 200px">
   <div class="row">

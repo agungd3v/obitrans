@@ -99,7 +99,7 @@
         <span>Marketing & Operational Office</span>
       </div>
       <div class="row mt-3">
-        <div class="col-md-4">
+        <div class="col-md-4 mb-2">
           <div class="d-flex align-items-center text-white nunito-sans gap-2">
             <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="2" cy="2" r="2" fill="white"/>
@@ -108,9 +108,13 @@
           </div>
           <div class="text-white nunito-sans">
             Jl. Letjen Suprapto No. L 20 D RT 001 RW 003 Harapan Mulya, Kecamatan Kemayoran, Kota Jakarta Pusat
+            <div class="d-flex align-items-center mt-2 gap-2">
+              <img src="{{ asset("whatsapp_white.png") }}" width="16" height="16" alt="">
+              085280004109
+            </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mb-2">
           <div class="d-flex align-items-center text-white nunito-sans gap-2">
             <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="2" cy="2" r="2" fill="white"/>
@@ -119,14 +123,22 @@
           </div>
           <div class="text-white nunito-sans">
             Perum Taman Mutiara Blok A No. 21 A Pemecutan Klod Denpasar Barat Kota Denpasar
+            <div class="d-flex align-items-center mt-2 gap-2">
+              <img src="{{ asset("whatsapp_white.png") }}" width="16" height="16" alt="">
+              085280004108
+            </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mb-2">
           <div class="d-flex align-items-center text-white nunito-sans gap-2 fw-bold">
             <span>Office</span>
           </div>
           <div class="text-white nunito-sans">
             Jl. Bandengan Selatan No. 43, Komplek Puri Delta Mas Blok C No. 36, Pejagalan, Penjaringan, Jakarta Utara
+            <div class="d-flex align-items-center mt-2 gap-2">
+              <img src="{{ asset("phone_white.png") }}" width="14" height="14" alt="">
+              02142805440
+            </div>
           </div>
         </div>
       </div>
