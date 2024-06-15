@@ -82,10 +82,32 @@
     dots: false,
     infinite: true,
     autoplay: true,
-    arrows: false,
+    arrows: true,
     speed: 500,
-    // fade: true,
-    cssEase: 'linear'
+    cssEase: 'linear',
+		nextArrow: `
+      <div class="position-absolute bg-transparent" style="top: 50%; transform: translateY(-50%); right: 0; z-index: 2">
+        <button class="testi-next btn bg-white d-flex justify-content-center align-items-center" style="border: 1px solid #322DD2; width: 42px; height: 42px; border-radius: 99999px">
+          <img src="{{ asset("slide_arrow_right.png") }}" style="width: 9px; height: 14px" alt="">
+        </button>
+      </div>
+    `,
+    prevArrow: `
+      <div class="position-absolute bg-transparent" style="top: 50%; transform: translateY(-50%); left: 0; z-index: 2">
+        <button class="testi-prev btn bg-white d-flex justify-content-center align-items-center" style="border: 1px solid #322DD2; width: 42px; height: 42px; border-radius: 99999px">
+          <img src="{{ asset("slide_arrow_left.png") }}" style="width: 9px; height: 14px" alt="">
+        </button>
+      </div>
+    `,
+    responsive: [
+      {
+        breakpoint: 512,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   })
 </script>
 @endpush
