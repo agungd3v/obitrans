@@ -61,7 +61,7 @@
             <div class="bg-white shadow" style="padding: 24px; border-radius: 12px">
               <div
                 class="overflow-hidden d-flex justify-content-center align-items-center"
-                style="width: 100%; height: 200px; background: #D8E3FF; border-radius: 8px"
+                style="width: 100%; height: 200px; background: #FFFFFF; border-radius: 8px"
               >
                 <div>
                   <img src="/${data.data[index].image}" class="img-fluid" alt="cars image">
