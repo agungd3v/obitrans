@@ -84,11 +84,12 @@
               </div>
               ${type == 2 ? `<span class="text-dark" style="font-size: 12px">Harga per hari :</span>` : ""}
               ${type == 2 ? `
-                <div class="text-dark fs-4 fw-bold mb-3">
+                <div class="text-dark fs-4 fw-bold mb-3 d-flex align-items-end justify-content-between">
+                  <span class="fs-5">Start From:</span>
                   ${Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR", minimumFractionDigits: 0}).format(data.data[index].price_per_day)}
                 </div>
               ` : ""}
-              <a href="#" class="d-block text-dark text-center fw-bold rounded-3 fs-5" style="background: #FFC700; padding: 10px 0">
+              <a href="${type == 2 ? 'https://api.whatsapp.com/send?phone=6285280004108&text=Halo%20saya%20tertarik%20dengan%20rental%20mobil%20Harian%20Bali%20di%20PT.%20Obitrans,%20Bagaimana%20cara%20untuk%20pemesanan%20mobil%20Harian%20ini%20?' : 'https://api.whatsapp.com/send?phone=6285280004109&text=Halo%20saya%20tertarik%20dengan%20rental%20mobil%20di%20PT.%20Obitrans,%20apakah%20saya%20dapat%20mendapatkan%20pricelist%20atau%20penawaran%20harga%20untuk%20perusahaan%20saya'}" class="d-block text-dark text-center fw-bold rounded-3 fs-5" style="background: #FFC700; padding: 10px 0">
                 Pesan Sekarang
               </a>
             </div>
