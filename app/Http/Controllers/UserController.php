@@ -321,6 +321,24 @@ class UserController extends Controller
 		return view("user.contact");
 	}
 
+	public function contactStore(Request $request) {
+		try {
+			DB::beginTransaction();
+
+			$contact = new Contact();
+			$contact->label = $request->label;
+			$contact->zone = $request->zone;
+			$contact->value = $request->value;
+			$contact->save();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil menambah kontak!");
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
 	public function contactData(Request $request) {
 		$contacts = Contact::all();
 
@@ -337,11 +355,29 @@ class UserController extends Controller
 			DB::beginTransaction();
 
 			$contact = Contact::where("id", $request->contact_id)->first();
+			$contact->zone = $request->contact_zone;
 			$contact->value = $request->contact_value;
 			$contact->save();
 
 			DB::commit();
 			return redirect()->back()->with("success", "Berhasil mengubah data contact!");
+		} catch (\Exception $e) {
+			DB::rollBack();
+			return redirect()->back()->with("error", $e->getMessage());
+		}
+	}
+
+	public function deleteContact(Request $request) {
+		try {
+			DB::beginTransaction();
+
+			$contact = Contact::where("id", $request->id)->first();
+			if (!$contact) throw new \Exception("Error, kontak tidak ditemukan!");
+
+			$contact->delete();
+
+			DB::commit();
+			return redirect()->back()->with("success", "Berhasil menghapus kontak!");
 		} catch (\Exception $e) {
 			DB::rollBack();
 			return redirect()->back()->with("error", $e->getMessage());
