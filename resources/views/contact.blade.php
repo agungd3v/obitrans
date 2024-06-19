@@ -47,9 +47,27 @@
         </div>
         <div class="col-sm-12 col-md-6 mb-2 text-white position-relative" style="z-index: 2">
           <p class="fw-bold">Contact</p>
-          @foreach ($contacts as $contact)
-            <div class="mb-1">{{ $contact->label }}: {{ $contact->value }}</div>
-          @endforeach
+          @if (isset($contactPhone))
+            <div class="mb-1">{{ $contactPhone->label }}: {{ $contactPhone->value }}</div>
+          @endif
+          @if (count($contactMobile) > 0)
+            <div class="mb-1 fw-bold">Whatsapp</div>
+            @foreach ($contactMobile as $mobile)
+              <div class="mb-1">{{ $mobile->zone }}: {{ $mobile->value }}</div>
+            @endforeach
+          @endif
+          @if (count($contactWhatsapp) > 0)
+            <div class="mb-1 fw-bold">Mobile</div>
+            @foreach ($contactWhatsapp as $whatsapp)
+              <div class="mb-1">{{ $whatsapp->zone }}: {{ $whatsapp->value }}</div>
+            @endforeach
+          @endif
+          @if (count($contactEmail) > 0)
+            <div class="mb-1 fw-bold">Email</div>
+            @foreach ($contactEmail as $email)
+              <div class="mb-1">{{ $email->zone }}: {{ $email->value }}</div>
+            @endforeach
+          @endif
           <div class="fw-bold my-3">Social Media</div>
           <div class="d-flex flex-column gap-2">
             @foreach ($socials as $social)

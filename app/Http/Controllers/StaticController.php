@@ -42,10 +42,13 @@ class StaticController extends Controller
 	}
 
 	public function contact() {
-		$contacts = Contact::all();
+		$contactPhone = Contact::where("label", "Phone")->first();
+		$contactMobile = Contact::where("label", "Mobile")->get();
+		$contactWhatsapp = Contact::where("label", "Whatsapp")->get();
+		$contactEmail = Contact::where("label", "Email")->get();
 		$socials = SocialMedia::all();
 
-		return view("contact", compact("contacts", "socials"));
+		return view("contact", compact("contactPhone", "contactMobile", "contactWhatsapp", "contactEmail", "socials"));
 	}
 
 	public function rent(Request $request, $type) {
