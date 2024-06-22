@@ -82,7 +82,7 @@
                   <span>${data.data[index].gear}</span>
                 </div>
               </div>
-              ${type == 2 ? `<span class="text-dark" style="font-size: 12px">Harga per hari :</span>` : ""}
+              ${type == 2 ? `<span class="text-dark" style="font-size: 12px">Harga mulai dari :</span>` : ""}
               ${type == 2 ? `
                 <div class="text-dark fs-4 fw-bold mb-3 d-flex align-items-end justify-content-between">
                   ${Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR", minimumFractionDigits: 0}).format(data.data[index].price_per_day)}
