@@ -156,7 +156,7 @@
     <img src="{{ asset("favicon.ico") }}" width="80" height="80" alt="logo">
     <span class="loader-splash"></span>
   </div>
-  <a href="https://api.whatsapp.com/send?phone=62811946221&text=Halo%20saya%20tertarik%20dengan%20rental%20mobil%20di%20PT.%20Obitrans,%20apakah%20saya%20dapat%20mendapatkan%20pricelist%20atau%20penawaran%20harga%20untuk%20perusahaan%20saya" class="position-fixed" style="bottom: 0; right: 0">
+  <a href="https://api.whatsapp.com/send?phone=6285280004109&text=Halo%20saya%20tertarik%20dengan%20rental%20mobil%20di%20PT.%20Obitrans,%20apakah%20saya%20dapat%20mendapatkan%20pricelist%20atau%20penawaran%20harga%20untuk%20perusahaan%20saya" class="position-fixed" style="bottom: 0; right: 0">
     <img src="{{ asset("flying_wa.png") }}" class="flying-wa" alt="">
   </a>
   <script src="{{ asset("assets/vendor/libs/jquery/jquery.js") }}"></script>
