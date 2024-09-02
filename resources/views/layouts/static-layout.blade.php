@@ -99,12 +99,12 @@
         <span>Marketing & Operational Office</span>
       </div>
       <div class="row mt-3">
-        <div class="col-md-4 mb-2">
+        <div class="col-md-3 mb-2">
           <div class="d-flex align-items-center text-white nunito-sans gap-2">
             <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="2" cy="2" r="2" fill="white"/>
             </svg>
-            <span>Jakarta:</span>
+            <span>Cabang Jakarta:</span>
           </div>
           <div class="text-white nunito-sans">
             Jl. Letjen Suprapto No. L 20 D RT 001 RW 003 Harapan Mulya, Kecamatan Kemayoran, Kota Jakarta Pusat
@@ -114,22 +114,33 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-2">
+        <div class="col-md-3 mb-2">
           <div class="d-flex align-items-center text-white nunito-sans gap-2">
             <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="2" cy="2" r="2" fill="white"/>
             </svg>
-            <span>Bali:</span>
+            <span>Cabang Bali:</span>
           </div>
           <div class="text-white nunito-sans">
-            Perum Taman Mutiara Blok A No. 21 A Pemecutan Klod Denpasar Barat Kota Denpasar
+            Perum Taman Mutiara Blok A No. 21 A Pemecutan Klod Denpasar Barat Kota <br>Denpasar
             <div class="d-flex align-items-center mt-2 gap-2">
-              <img src="{{ asset("whatsapp_white.png") }}" width="16" height="16" alt="">
-              085280004108
+            <img src="{{ asset("whatsapp_white.png") }}" width="16" height="16" alt="">
+             085280004108
             </div>
           </div>
         </div>
-        <div class="col-md-4 mb-2">
+        <div class="col-md-3 mb-2">
+        <div class="d-flex align-items-center text-white nunito-sans gap-2">
+            <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="2" cy="2" r="2" fill="white"/>
+            </svg>
+            <span>Cabang Ambon:</span>
+          </div>
+          <div class="text-white nunito-sans">
+          Jl. Jendral Sudirman RT 005 / RW 005, Kelurahan Hative Kecil, Kec. Sirimau, Kota Ambon.
+          </div>
+        </div>
+        <div class="col-md-3 mb-2">
           <div class="d-flex align-items-center text-white nunito-sans gap-2 fw-bold">
             <span>Office</span>
           </div>
