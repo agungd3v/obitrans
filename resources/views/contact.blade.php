@@ -38,6 +38,15 @@
           <div class="text-white mb-2">
             Perum Taman Mutiara Blok A No. 21 A Pemecutan Klod Denpasar Barat Kota Denpasar
           </div>
+          <div class="d-flex align-items-center text-white gap-2">
+            <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="2" cy="2" r="2" fill="white"/>
+            </svg>
+            <span>Ambon:</span>
+          </div>
+          <div class="text-white mb-2">
+          Jl. Jendral Sudirman RT 005 / RW 005, Kelurahan Hative Kecil, Kec. Sirimau, Kota Ambon
+          </div>
           <div class="d-flex align-items-center text-white gap-2 fw-bold">
             <span>Office</span>
           </div>

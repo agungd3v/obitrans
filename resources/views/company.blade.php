@@ -94,7 +94,7 @@
     Marketing & Operational Office
   </div>
   <div class="row mt-1 mb-5">
-    <div class="col-md-4 text-dark">
+    <div class="col-md-3 text-dark">
       <div class="d-flex align-items-center text-dark nunito-sans gap-2">
         <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="2" cy="2" r="2" fill="black"/>
@@ -105,7 +105,7 @@
         Jl. Letjen Suprapto No. L 20 D RT 001 RW 003 Harapan Mulya, Kecamatan Kemayoran, Kota Jakarta Pusat
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="d-flex align-items-center text-dark nunito-sans gap-2">
         <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="2" cy="2" r="2" fill="black"/>
@@ -115,8 +115,18 @@
       <div class="nunito-sans text-dark">
         Perum Taman Mutiara Blok A No. 21 A Pemecutan Klod Denpasar Barat Kota Denpasar
       </div>
+    </div><div class="col-md-3">
+      <div class="d-flex align-items-center text-dark nunito-sans gap-2">
+        <svg width="4" height="4" viewBox="0 0 4 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="2" cy="2" r="2" fill="black"/>
+        </svg>
+        <span>Ambon:</span>
+      </div>
+      <div class="nunito-sans text-dark">
+      Jl. Jendral Sudirman RT 005 / RW 005, Kelurahan Hative Kecil, Kec. Sirimau, Kota Ambon
+      </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="d-flex align-items-center nunito-sans gap-2 fw-bold">
         <span class="text-dark">Office</span>
       </div>
